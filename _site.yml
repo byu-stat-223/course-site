@@ -1,18 +1,22 @@
 name: "BYU Stat 223: Applied R Programming"
 output_dir: "docs"
 navbar:
-        title: "Stat 223"
-        left:
-                - text: "Home"
-                  icon: fa-home
-                  href: index.html
-                - text: "Syllabus"
-                  href: syllabus.html
-                - text: "Notes"
-                  href: notes.html
-                - text: "Assignments"
-                  href: assignments.html
-                - text: "Resources"
-                  href: resources.html
-                - text: "About"
-                  href: about.html
+  title: "Stat 223"
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Syllabus"
+      href: syllabus.html
+    - text: "Notes"
+      href: notes.html
+    - text: "Assignments"
+      href: assignments.html
+    - text: "Resources"
+      href: resources.html
+    - text: "About"
+      href: about.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate

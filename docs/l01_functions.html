@@ -11,7 +11,7 @@
 
 
 
-<title>BYU Stat 223: Applied R Programming</title>
+<title>Functions</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -217,12 +217,38 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">BYU Stat 223: Applied R Programming</h1>
+<h1 class="title toc-ignore">Functions</h1>
 
 </div>
 
 
-<p>This is the homepage for BYU Stat 223: Applied R programming.</p>
+<p>Functions are used to create pieces of code that can be re-used with different parameter values.</p>
+<p>Functions can be defined inline:</p>
+<pre class="r"><code># Function whose input is a scalar and output is square of the scalar
+square &lt;- function(x) x^2
+square(10)</code></pre>
+<pre><code>## [1] 100</code></pre>
+<p>Or with curly braces:</p>
+<pre class="r"><code>square &lt;- function(x) {
+  x^2
+}
+square(10)</code></pre>
+<pre><code>## [1] 100</code></pre>
+<p>Create a function whose input is a vector of values and whose output is the mean, median, and variance of the vector of values. Do this with out using the “mean”, “median”, or “var” functions</p>
+<pre class="r"><code>mn.md.var &lt;- function(x) {
+    n &lt;- length(x)
+    mn &lt;- sum(x)/n
+    var &lt;- sum((x - mn)^2)/(n - 1)
+    sx &lt;- sort(x)
+    md &lt;- if (n %% 2 == 1) {
+        sx[floor(n/2) + 1]
+    } else {
+        (sx[n/2] + sx[n/2 + 1])/2
+    }
+    c(mn, md, var)  
+}</code></pre>
+<p>Write a zero function (i.e., a function that always returns 0)</p>
+<pre class="r"><code>zero &lt;- function(x) 0</code></pre>
 
 
 

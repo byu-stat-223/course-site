@@ -1,0 +1,26 @@
+STAT 223 coding standards:
+
+1. Use consistent indentation for code bodies, etc.
+
+2. Use gets operator "<-" instead of equals operator "=" for assignment.
+
+3. One space on either side of " <- " operator.
+
+4. Use 'for (..." instead of 'for(...'. Same for 'if' and start of functions.
+
+5. Use vectorization whenever possible.
+
+6. Use TRUE and FALSE instead of T and F.
+
+7. Favor sapply function over 'for' loop for simple problems.
+
+8. R scripts should be run correctly from a clean R environment with the current working directory being the directory containing the script.
+
+9. Use meaningful variable names.
+
+10. Load packages at the start of the script using the library function.
+
+11. Avoid "hard coding" the same value in several places; instead set a variable once and use the variable in the place of hard coded values.
+
+12. Avoid copying and pasting large sections of code; instead write a function that carries out operation.
+

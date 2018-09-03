@@ -1,0 +1,49 @@
+---
+title: "Functions"
+output: html_document
+---
+
+Functions are used to create pieces of code that can be re-used with different
+parameter values.
+
+Functions can be defined inline:
+```{r}
+# Function whose input is a scalar and output is square of the scalar
+square <- function(x) x^2
+square(10)
+```
+
+Or with curly braces:
+```{r}
+square <- function(x) {
+  x^2
+}
+square(10)
+```
+
+Create a function whose input is a vector of values and whose output is the
+mean, median, and variance of the vector of values.  Do this with out using
+the "mean", "median", or "var" functions
+```{r}
+mn_md_var <- function(x) {
+	n <- length(x)
+	mn <- sum(x)/n
+	var <- sum((x - mn)^2)/(n - 1)
+	sx <- sort(x)
+	md <- if (n %% 2 == 1) {
+		sx[floor(n/2) + 1]
+	} else {
+		(sx[n/2] + sx[n/2 + 1])/2
+	}
+	c(mn, md, var)	
+}
+```
+
+Write a zero function (i.e., a function that always returns 0)
+```{r}
+zero <- function(x) 0
+zero(60)
+zero(100)
+zero("a")
+```
+
