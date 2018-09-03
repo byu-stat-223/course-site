@@ -1,0 +1,6 @@
+---
+title: 'BYU Stat 223: Applied R Programming'
+output: html_document
+---
+
+This is the homepage for BYU Stat 223: Applied R programming.
