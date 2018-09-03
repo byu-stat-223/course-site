@@ -6,8 +6,7 @@ output: html_document
 #### 2018-09-04
 
 + Overview of the course.
-+ [STAT 223 coding standards](coding-standards.txt)
-  + http://style.tidyverse.org/
++ [STAT 223 coding standards](coding-standards.html)
 + [Review of functions in STAT 123](l01_functions.html)
 + [Getting Started in STAT 223](setup.html)
 + [Homework 1](hw1.html) is assigned.
