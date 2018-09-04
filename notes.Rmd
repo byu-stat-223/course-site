@@ -9,8 +9,9 @@ output: html_document
 + Getting Started in STAT 223
   + [R](https://cran.r-project.org) and 
   [RStudio](https://www.rstudio.com/products/rstudio/download/preview/)
-  + [git](https://git-scm.com)
-  + [GitHub](https://github.com)
+  + [Version control](http://happygitwithr.com/)
+    + [git](https://git-scm.com)
+    + [GitHub](https://github.com)
   + [Intro survey](https://goo.gl/forms/kNZILd3zeZO5UBWI2)
 + [STAT 223 coding standards](coding-standards.html)
 + [Review of functions in STAT 123](l01_functions.html)
