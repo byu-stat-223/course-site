@@ -1,0 +1,22 @@
+---
+title: "Resources"
+output: html_document
+---
+
+While not required, these resources will help you grow in your understanding of
+R.
+
+### [R for Data Science](http://r4ds.had.co.nz)
+* Great resource for learning modern data science techniques using R.
+* Focusses on the [tidyverse](https://www.tidyverse.org) and how various tools
+enable different aspects of the Data Science process.
+
+### [Efficient R Programming](https://csgillespie.github.io/efficientR/)
+* Great resource for becoming more familiar with R and using it more effectively.
+
+### [Advanced R](https://adv-r.hadley.nz)
+* Work in progress 2nd edition.
+* Great for a deep dive into R.
+
+### [DataCamp](https://www.datacamp.com)
+* Interactive code lessons in various languages / technologies.
