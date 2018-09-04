@@ -5,6 +5,15 @@ output: html_document
 
 This is the homepage for BYU Stats 223: Applied R Programming.
 
+---
+
+**Section 5** | TTh 3:25 - 4:45 | *174 TNRB*
+
+
+**Section 7** | TTh 4:55 - 6:15 | *174 TNRB*
+
+---
+
 ### Instructor
 The instructor for this course is James Blair.
 
@@ -12,3 +21,10 @@ The instructor for this course is James Blair.
 * Email: [blair@stat.byu.edu](mailto:blair@stat.byu.edu)
 
 ### TAs
+#### Section 5 (TTh 3:25 - 4:45)
+* [Thomas Jensen](mailto:tompjensen@gmail.com)
+* [Brandon Allen](mailto:ballenor@comcast.net)
+
+#### Section 7 (TTh 4:55 - 6:15)
+* [Jacob West](mailto:jacobrobertwest@gmail.com)
+* [Adom Ott](mailto:adderotter@hotmail.com)
