@@ -1,0 +1,7 @@
+---
+title: "Assignments"
+output: html_document
+---
+
+#### [Homework 1](hw1.html) | *Due
+2018-09-11 at 8am*
