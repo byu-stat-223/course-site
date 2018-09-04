@@ -6,8 +6,11 @@ output: html_document
 #### 2018-09-04
 
 + Overview of the course.
++ Getting Started in STAT 223
+  + [R](https://cran.r-project.org) and 
+  [RStudio](https://www.rstudio.com/products/rstudio/download/preview/)
+  + [GitHub](https://github.com)
+  + [Intro survey](https://goo.gl/forms/kNZILd3zeZO5UBWI2)
 + [STAT 223 coding standards](coding-standards.html)
 + [Review of functions in STAT 123](l01_functions.html)
-+ [Getting Started in STAT 223](setup.html)
-+ [Homework 1](hw1.html) is assigned.
-
++ Homework 1 is assigned.
