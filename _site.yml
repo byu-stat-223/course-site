@@ -10,8 +10,6 @@ navbar:
       href: syllabus.html
     - text: "Notes"
       href: notes.html
-    - text: "Assignments"
-      href: assignments.html
     - text: "Resources"
       href: resources.html
     - text: "About"
