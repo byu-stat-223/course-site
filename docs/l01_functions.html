@@ -197,9 +197,6 @@ $(document).ready(function () {
   <a href="notes.html">Notes</a>
 </li>
 <li>
-  <a href="assignments.html">Assignments</a>
-</li>
-<li>
   <a href="resources.html">Resources</a>
 </li>
 <li>
@@ -235,7 +232,7 @@ square(10)</code></pre>
 square(10)</code></pre>
 <pre><code>## [1] 100</code></pre>
 <p>Create a function whose input is a vector of values and whose output is the mean, median, and variance of the vector of values. Do this with out using the “mean”, “median”, or “var” functions</p>
-<pre class="r"><code>mn.md.var &lt;- function(x) {
+<pre class="r"><code>mn_md_var &lt;- function(x) {
     n &lt;- length(x)
     mn &lt;- sum(x)/n
     var &lt;- sum((x - mn)^2)/(n - 1)
@@ -248,7 +245,13 @@ square(10)</code></pre>
     c(mn, md, var)  
 }</code></pre>
 <p>Write a zero function (i.e., a function that always returns 0)</p>
-<pre class="r"><code>zero &lt;- function(x) 0</code></pre>
+<pre class="r"><code>zero &lt;- function(x) 0
+zero(60)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>zero(100)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>zero(&quot;a&quot;)</code></pre>
+<pre><code>## [1] 0</code></pre>
 
 
 
