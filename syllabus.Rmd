@@ -17,17 +17,6 @@ Prerequisites: STAT 123.
 + Solve complex problems using advanced R programming methodology.
 + Perform simulation studies, e.g. Central Limit Theorem, confidence intervals, power, etc.
 
-# Helpful Resources
-
-While not required, these resources will help you grow in your understanding of
-R.
-
-+ [R for Data Science](http://r4ds.had.co.nz)
-+ [Efficient R Programming](https://csgillespie.github.io/efficientR/)
-+ [Advanced R](https://adv-r.hadley.nz)
-+ [DataCamp](https://www.datacamp.com)
-
-
 # Computing Platform
 
 The computing platform for STAT 223 is your own laptop computer, desktop
