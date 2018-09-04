@@ -1,0 +1,27 @@
+---
+title: "Homework 1"
+date: "Due 2018-09-11 at 8am"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
++ Make sure your laptop is setup (install git, R, and RStudio)
+
++ Without changing the names, add all the files in [this
+repository](https://github.com/byu-stat-223/stat223-hw1) to your HW1 repository.
+
++ Modify the R scripts to produce the requested results.  Remember to use the
+[coding standards](coding-standards.html).
+
++ In a script named `fib.R`, write an function named `fib` whose sole input is an
+integer (say `n`) and whose output is a vector containing the first n Fibonacci
+numbers (every number after the first two is the sum of the two preceding ones
+and the first two numbers are 1).
+
++ Commit your work to your HW1 repository and push these updated files to
+your online GitHub repository. **Remember that HW is not submitted until it is
+successfully pushed to GitHub.**
+
