@@ -18,6 +18,9 @@ This is the homepage for BYU Stats 223: Applied R Programming.
 The instructor for this course is James Blair.
 
 * Office: 237 TMCB (On campus Tue and Thur only)
+  * Office Hours:
+    * Tuesday 1-2 pm
+    * Thursday 12-1 pm
 * Email: [blair@stat.byu.edu](mailto:blair@stat.byu.edu)
 
 ### TAs
