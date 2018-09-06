@@ -13,6 +13,8 @@ in both perfect love and perfect humility. His brilliance is not the
 
 \- Neal A. Maxwell ([GC April 1976](https://www.lds.org/general-conference/1976/04/jesus-of-nazareth-savior-and-king?lang=eng))
 
++ Announcements:
+  + [Department Opening Social](images/os-flyer.jpg)
 + R Moment: [Shiny](http://shiny.rstudio.com/gallery/)
 + [Setup ssh keys for GitHub](http://happygitwithr.com/ssh-keys.html)
 + Stat 123 Q&A
