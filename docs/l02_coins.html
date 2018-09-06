@@ -235,11 +235,11 @@ $(document).ready(function () {
 <h3>Multiple coins</h3>
 <p>Simulate the process of tossing a bent coin 60 times, where the probability of a head is p = 1/4.</p>
 <pre class="r"><code>sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
-<pre><code>##  [1] 1 0 0 1 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 1 1 0 1 0 0 0
-## [36] 1 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 0 0 0 0 0 0 0 1 1</code></pre>
+<pre><code>##  [1] 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1
+## [36] 0 1 1 0 0 0 0 0 1 1 0 0 1 0 1 0 0 1 0 0 1 0 1 1 0</code></pre>
 <pre class="r"><code>sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
-<pre><code>##  [1] 0 1 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 0 0
-## [36] 1 1 1 0 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 1 0</code></pre>
+<pre><code>##  [1] 0 0 1 0 0 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 0 0 0 1 1 0 0 1 0 0 1 0 0 1 0
+## [36] 1 1 0 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1</code></pre>
 <p>Notice that the results above are different - why?</p>
 <p>You can use <code>set.seed()</code> to ensure results are identical when random elements are involved.</p>
 <pre class="r"><code>set.seed(35487)

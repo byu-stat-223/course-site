@@ -5,7 +5,15 @@ output: html_document
 
 #### 2018-09-06
 
-+ R Moment: [shinyloadtest](https://rstudio.github.io/shinyloadtest/)
+*I testify that his intelligence is vastly superior in every field to the very 
+brightest mortals in those fields and that his intellect in scope and truth far 
+exceeds all human intellects. I thank him for encapsulating that exquisite mind 
+in both perfect love and perfect humility. His brilliance is not the 
+“catch-me-if-you-can” kind, but a pleading and patient, “Come, follow me.”*
+
+\- Neal A. Maxwell ([GC April 1976](https://www.lds.org/general-conference/1976/04/jesus-of-nazareth-savior-and-king?lang=eng))
+
++ R Moment: [Shiny](http://shiny.rstudio.com/gallery/)
 + [Setup ssh keys for GitHub](http://happygitwithr.com/ssh-keys.html)
 + Stat 123 Q&A
 + Getting started with [Homework 1](hw1.html)
