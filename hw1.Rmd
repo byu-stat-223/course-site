@@ -10,6 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 + Make sure your laptop is setup (install git, R, and RStudio)
 
++ Use [this link](https://classroom.github.com/a/wMFYyzeu) to create your hw1
+repository on GitHub
+
 + Without changing the names, add all the files in [this
 repository](https://github.com/byu-stat-223/stat223-hw1) to your HW1 repository.
 
