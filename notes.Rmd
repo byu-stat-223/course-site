@@ -16,6 +16,8 @@ in both perfect love and perfect humility. His brilliance is not the
 + R Moment: [Shiny](http://shiny.rstudio.com/gallery/)
 + [Setup ssh keys for GitHub](http://happygitwithr.com/ssh-keys.html)
 + Stat 123 Q&A
++ A word about [RMarkdown](https://rmarkdown.rstudio.com/) and 
+[Notebooks](https://rmarkdown.rstudio.com/r_notebooks)
 + Getting started with [Homework 1](hw1.html)
 + Introduction to simulation studies:
   + "Simulation study" and "Monte Carlo study" are synonymous.
