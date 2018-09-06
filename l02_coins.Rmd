@@ -3,6 +3,11 @@ title: "Coin Flip Simulation"
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+
 ### Single coin
 Randomly sample one value from the set [0, 1] where the probability of 0 is 3/4
 and the probability of 1 is 1/4.

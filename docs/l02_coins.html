@@ -226,20 +226,20 @@ $(document).ready(function () {
 <h3>Single coin</h3>
 <p>Randomly sample one value from the set [0, 1] where the probability of 0 is 3/4 and the probability of 1 is 1/4.</p>
 <pre class="r"><code>sample(c(0, 1), 1, prob = c(3/4, 1/4))</code></pre>
-<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 1</code></pre>
 <p>Simulate the process of tossing a bent coin one time, where the probability of a head is p = 1/4</p>
 <pre class="r"><code>sample(c(0, 1), 1, prob = c(3/4, 1/4))</code></pre>
-<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 1</code></pre>
 </div>
 <div id="multiple-coins" class="section level3">
 <h3>Multiple coins</h3>
 <p>Simulate the process of tossing a bent coin 60 times, where the probability of a head is p = 1/4.</p>
 <pre class="r"><code>sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
-<pre><code>##  [1] 1 0 1 0 0 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1
-## [36] 0 1 1 0 0 0 0 0 1 1 0 0 1 0 1 0 0 1 0 0 1 0 1 1 0</code></pre>
+<pre><code>##  [1] 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 1 0 1 0 1 1 1 1 0
+## [36] 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 1 0 0 1 0 0 0</code></pre>
 <pre class="r"><code>sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
-<pre><code>##  [1] 0 0 1 0 0 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 0 0 0 1 1 0 0 1 0 0 1 0 0 1 0
-## [36] 1 1 0 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1</code></pre>
+<pre><code>##  [1] 0 1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 1 0 0 1 0
+## [36] 0 0 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 0 0 0</code></pre>
 <p>Notice that the results above are different - why?</p>
 <p>You can use <code>set.seed()</code> to ensure results are identical when random elements are involved.</p>
 <pre class="r"><code>set.seed(35487)
