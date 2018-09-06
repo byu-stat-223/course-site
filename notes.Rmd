@@ -3,6 +3,28 @@ title: "Notes"
 output: html_document
 ---
 
+#### 2018-09-06
+
++ R Moment: [shinyloadtest](https://rstudio.github.io/shinyloadtest/)
++ [Setup ssh keys for GitHub](http://happygitwithr.com/ssh-keys.html)
++ Stat 123 Q&A
++ Getting started with [Homework 1](hw1.html)
++ Introduction to simulation studies:
+  + "Simulation study" and "Monte Carlo study" are synonymous.
+  + Represent a real-world process programatically in order to evaluate statistical
+  properties
+  + Uses include:
+    + Describing distributions (e.g., mean, variance, quantiles).
+    + Evaluating point estimators.
+    + Evaluating confidence intervals.
+    + Investigating the properties and performance of testing hypothesis procedures.
+    + Checking the finite-sample statistical properties of estimators and testing 
+    procedures that have been motivated through asymptotics.
+    + and many others...
+  + Especially useful when theoretical derivations are unavailable, difficult, 
+    or intractable.
++ [Flipping coins](l02_coins.html)
+
 #### 2018-09-04
 
 + Overview of the course.

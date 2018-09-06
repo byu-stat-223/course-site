@@ -1,0 +1,135 @@
+---
+title: "Coin Flip Simulation"
+output: html_document
+---
+
+### Single coin
+Randomly sample one value from the set [0, 1] where the probability of 0 is 3/4
+and the probability of 1 is 1/4.
+
+```{r}
+sample(c(0, 1), 1, prob = c(3/4, 1/4))
+```
+
+Simulate the process of tossing a bent coin one time, where the probability of a
+head is p = 1/4
+
+```{r}
+sample(c(0, 1), 1, prob = c(3/4, 1/4))
+```
+
+### Multiple coins
+Simulate the process of tossing a bent coin 60 times, where the probability of a
+head is p = 1/4.
+
+```{r}
+sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)
+sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)
+```
+
+Notice that the results above are different - why?
+
+You can use `set.seed()` to ensure results are identical when random elements are
+involved.
+
+```{r}
+set.seed(35487)
+sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)
+
+set.seed(35487)
+sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)
+```
+
+### Simulation study
+Now that we have the building blocks, we'll simulate this process multiple times
+to provide a reliable estimate of the average number of heads out of 60 tosses.
+There are multiple approaches that can be used here, and we'll look at each one.
+
+In order to build these simulation examples, let's setup a few things first. We'll
+define the number of simulations we run as `n_sims` and we'll also create a 
+function for a single "run" of the simulation.
+
+```{r}
+n_sims <- 1000
+
+flip_coins <- function(n_flips = 60) {
+  sample(c(0, 1), n_flips, prob = c(3, 1), replace = TRUE)
+}
+```
+
+
+#### For Loop
+For loops are a staple programming concept. However, given R's ability to vectorize
+operations and other R-centric functions (the `apply` family), there are often
+better ways to iterate through objects.
+
+```{r}
+heads <- numeric(n_sims)
+for (i in seq_along(heads)) {
+  heads[i] <- sum(flip_coins())
+}
+```
+
+Now that we have the number of heads that appeared in 1000 simulations of flipping
+this coin 60 times, we can compute the average number of heads that appear in this
+scenario.
+
+```{r}
+mean(heads)
+```
+
+
+#### Sapply function
+
+```{r}
+heads <- sapply(1:n_sims, function(x) sum(flip_coins()))
+```
+
+#### Replicate function
+`replicate` is part of the `apply` family and it lends itself well to simulation
+studies.
+
+```{r}
+heads <- replicate(n = n_sims, sum(flip_coins()))
+```
+
+#### Tidyverse
+The [tidyverse](https://www.tidyverse.org/) " is an opinionated collection of R 
+packages designed for data science. All packages share an underlying design 
+philosophy, grammar, and data structures."
+
+The `purrr` package is part of the `tidyverse` and provides an alternative to 
+the `apply` family of functions.
+
+```{r}
+# install.packages("tidyverse")
+library(tidyverse)
+
+rerun(n_sims, flip_coins()) %>% 
+  map_dbl(sum) %>% 
+  mean()
+```
+
+
+### Calculations
+So far, we've used our simulated data to determine the average number of heads
+in a set of 60 unfair coin flips. We can also use this data to calculate other
+metrics.
+
+Determine the variance of the number of heads in 60 coin flips.
+
+```{r}
+var(heads)
+```
+
+We can also find the probability that the number of heads in 60 tosses is greater
+than 20.
+```{r}
+mean(heads > 20)
+```
+
+Finally, we can ind the 20th percentile of the number of heads in 60 tosses.
+```{r}
+quantile(heads, 0.25)
+```
+
