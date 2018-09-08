@@ -24,10 +24,14 @@ The instructor for this course is James Blair.
 * Email: [blair@stat.byu.edu](mailto:blair@stat.byu.edu)
 
 ### TAs
-#### Section 5 (TTh 3:25 - 4:45)
 * [Thomas Jensen](mailto:tompjensen@gmail.com)
 * [Brandon Allen](mailto:ballenor@comcast.net)
-
-#### Section 7 (TTh 4:55 - 6:15)
+  * Office Hours (235 TMCB):
+    * Monday 12 - 2 pm
+    * Wedesday 12 - 2 pm
 * [Jacob West](mailto:jacobrobertwest@gmail.com)
 * [Adom Ott](mailto:adderotter@hotmail.com)
+  * Office Hours (235 TMCB):
+    * Monday 4 - 6 pm
+    * Thursday 10 - 11 am
+    * Friday 1 - 2 pm
