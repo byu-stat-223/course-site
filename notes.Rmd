@@ -76,7 +76,7 @@ in both perfect love and perfect humility. His brilliance is not the
     + and many others...
   + Especially useful when theoretical derivations are unavailable, difficult, 
     or intractable.
-+ [Flipping coins](l02_coins.html) | [code](l02_coins.Rmd)
++ [Flipping coins](l02_coins.nb.html)
 
 #### 2018-09-04
 
