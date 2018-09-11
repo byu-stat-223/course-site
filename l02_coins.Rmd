@@ -43,6 +43,8 @@ sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)
 
 set.seed(35487)
 sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)
+
+
 ```
 
 ### Simulation study
@@ -62,6 +64,10 @@ flip_coins <- function(n_flips = 60) {
 }
 ```
 
+```{r}
+flip_coins()
+```
+
 
 #### For Loop
 For loops are a staple programming concept. However, given R's ability to vectorize
@@ -73,6 +79,8 @@ heads <- numeric(n_sims)
 for (i in seq_along(heads)) {
   heads[i] <- sum(flip_coins())
 }
+
+heads
 ```
 
 Now that we have the number of heads that appeared in 1000 simulations of flipping

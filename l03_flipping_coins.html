@@ -11,7 +11,7 @@
 
 
 
-<title>Coin Flip Simulation</title>
+<title>More Flipping Coins</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -217,102 +217,87 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Coin Flip Simulation</h1>
+<h1 class="title toc-ignore">More Flipping Coins</h1>
 
 </div>
 
 
-<div id="single-coin" class="section level3">
-<h3>Single coin</h3>
-<p>Randomly sample one value from the set [0, 1] where the probability of 0 is 3/4 and the probability of 1 is 1/4.</p>
-<pre class="r"><code>sample(c(0, 1), 1, prob = c(3/4, 1/4))</code></pre>
-<pre><code>## [1] 1</code></pre>
-<p>Simulate the process of tossing a bent coin one time, where the probability of a head is p = 1/4</p>
-<pre class="r"><code>sample(c(0, 1), 1, prob = c(3/4, 1/4))</code></pre>
-<pre><code>## [1] 1</code></pre>
-</div>
-<div id="multiple-coins" class="section level3">
-<h3>Multiple coins</h3>
-<p>Simulate the process of tossing a bent coin 60 times, where the probability of a head is p = 1/4.</p>
-<pre class="r"><code>sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
-<pre><code>##  [1] 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 1 0 1 0 1 1 1 1 0
-## [36] 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 1 0 0 1 0 0 0</code></pre>
-<pre class="r"><code>sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
-<pre><code>##  [1] 0 1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 1 0 0 1 0
-## [36] 0 0 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 0 0 0</code></pre>
-<p>Notice that the results above are different - why?</p>
-<p>You can use <code>set.seed()</code> to ensure results are identical when random elements are involved.</p>
-<pre class="r"><code>set.seed(35487)
-sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
-<pre><code>##  [1] 0 0 0 0 1 0 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 1 0 1 0 0 1 1 0 0 0 0 0
-## [36] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0</code></pre>
-<pre class="r"><code>set.seed(35487)
-sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
-<pre><code>##  [1] 0 0 0 0 1 0 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 1 0 1 0 0 1 1 0 0 0 0 0
-## [36] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0</code></pre>
-</div>
-<div id="simulation-study" class="section level3">
-<h3>Simulation study</h3>
-<p>Now that we have the building blocks, we’ll simulate this process multiple times to provide a reliable estimate of the average number of heads out of 60 tosses. There are multiple approaches that can be used here, and we’ll look at each one.</p>
-<p>In order to build these simulation examples, let’s setup a few things first. We’ll define the number of simulations we run as <code>n_sims</code> and we’ll also create a function for a single “run” of the simulation.</p>
-<pre class="r"><code>n_sims &lt;- 1000
+<p>Consider flipping <code>size</code> distinct coins. After each round, each coin that is tails is flipped again. After <code>n_rounds</code>, where <code>n_rounds</code> is at least one, the proportion of coins that are <code>heads</code> is computed. Answer these questions:</p>
+<ol style="list-style-type: decimal">
+<li>What is the expected number of heads?</li>
+<li>What is the standard deviation of the number of heads?</li>
+</ol>
+<p>In order to answer these questions, we’ll build a function to help us simulate this scenario.</p>
+<pre class="r"><code>flip_coins &lt;- function(size = 64, n_rounds = 1) {
+  if (n_rounds &lt; 1) stop(&quot;n_rounds must be at least 1.&quot;)
+  x &lt;- sample(c(&quot;H&quot;, &quot;T&quot;), size = size, replace = TRUE)
+  if (n_rounds &gt; 1) {
+    for (i in 2:n_rounds) {
+      x[x == &quot;T&quot;] &lt;- sample(c(&quot;H&quot;, &quot;T&quot;), size = sum(x == &quot;T&quot;), replace = TRUE)
+    }
+  }
+  sum(x == &quot;H&quot;)
+}
 
-flip_coins &lt;- function(n_flips = 60) {
-  sample(c(0, 1), n_flips, prob = c(3, 1), replace = TRUE)
-}</code></pre>
+flip_coins(n_rounds = 3)</code></pre>
+<pre><code>## [1] 57</code></pre>
+<p>How can we estimate the average number of heads and the standard deviation associated with number of heads? We can certainly use probability theory. An alternative approach is a Monte Carlo or simulation study.</p>
+<pre class="r"><code>n_reps &lt;- 1000
+n_rounds &lt;- 3</code></pre>
 <div id="for-loop" class="section level4">
 <h4>For Loop</h4>
-<p>For loops are a staple programming concept. However, given R’s ability to vectorize operations and other R-centric functions (the <code>apply</code> family), there are often better ways to iterate through objects.</p>
-<pre class="r"><code>heads &lt;- numeric(n_sims)
-for (i in seq_along(heads)) {
-  heads[i] &lt;- sum(flip_coins())
-}</code></pre>
-<p>Now that we have the number of heads that appeared in 1000 simulations of flipping this coin 60 times, we can compute the average number of heads that appear in this scenario.</p>
-<pre class="r"><code>mean(heads)</code></pre>
-<pre><code>## [1] 14.99</code></pre>
+<pre class="r"><code>library(tictoc)
+
+n_heads &lt;- numeric(n_reps)
+tic(&quot;For Loop&quot;)
+for (i in seq_along(n_heads)) {
+  n_heads[i] &lt;- flip_coins(n_rounds = n_rounds)
+}
+toc()</code></pre>
+<pre><code>## For Loop: 0.067 sec elapsed</code></pre>
 </div>
-<div id="sapply-function" class="section level4">
-<h4>Sapply function</h4>
-<pre class="r"><code>heads &lt;- sapply(1:n_sims, function(x) sum(flip_coins()))</code></pre>
-</div>
-<div id="replicate-function" class="section level4">
-<h4>Replicate function</h4>
-<p><code>replicate</code> is part of the <code>apply</code> family and it lends itself well to simulation studies.</p>
-<pre class="r"><code>heads &lt;- replicate(n = n_sims, sum(flip_coins()))</code></pre>
+<div id="sapply-replicate" class="section level4">
+<h4>sapply / replicate</h4>
+<pre class="r"><code>tic(&quot;sapply&quot;)
+n_heads &lt;- sapply(1:n_reps, function(x) flip_coins(n_rounds = n_rounds))
+toc()</code></pre>
+<pre><code>## sapply: 0.045 sec elapsed</code></pre>
+<pre class="r"><code>tic(&quot;replicate&quot;)
+n_heads &lt;- replicate(n_reps, flip_coins(n_rounds = n_rounds))
+toc()</code></pre>
+<pre><code>## replicate: 0.043 sec elapsed</code></pre>
 </div>
 <div id="tidyverse" class="section level4">
 <h4>Tidyverse</h4>
-<p>The <a href="https://www.tidyverse.org/">tidyverse</a> &quot; is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.&quot;</p>
-<p>The <code>purrr</code> package is part of the <code>tidyverse</code> and provides an alternative to the <code>apply</code> family of functions.</p>
-<pre class="r"><code># install.packages(&quot;tidyverse&quot;)
-library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ───────────────────</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
 ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
 ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
 ## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ─── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ───── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>rerun(n_sims, flip_coins()) %&gt;% 
-  map_dbl(sum) %&gt;% 
-  mean()</code></pre>
-<pre><code>## [1] 15.16</code></pre>
-</div>
-</div>
-<div id="calculations" class="section level3">
-<h3>Calculations</h3>
-<p>So far, we’ve used our simulated data to determine the average number of heads in a set of 60 unfair coin flips. We can also use this data to calculate other metrics.</p>
-<p>Determine the variance of the number of heads in 60 coin flips.</p>
-<pre class="r"><code>var(heads)</code></pre>
-<pre><code>## [1] 11.63123</code></pre>
-<p>We can also find the probability that the number of heads in 60 tosses is greater than 20.</p>
-<pre class="r"><code>mean(heads &gt; 20)</code></pre>
-<pre><code>## [1] 0.058</code></pre>
-<p>Finally, we can ind the 20th percentile of the number of heads in 60 tosses.</p>
-<pre class="r"><code>quantile(heads, 0.25)</code></pre>
-<pre><code>## 25% 
-##  13</code></pre>
+<pre class="r"><code>tic(&quot;purrr&quot;)
+n_heads &lt;- rerun(n_reps, flip_coins(n_rounds = n_rounds)) %&gt;% 
+  unlist()
+toc()</code></pre>
+<pre><code>## purrr: 0.032 sec elapsed</code></pre>
+<p>Now that we have the sampling distribution of the number of heads (<code>n_heads</code>), we can summarise it.</p>
+<pre class="r"><code>plot(table(n_heads))</code></pre>
+<p><img src="l03_flipping_coins_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>table(n_heads) / length(n_heads)</code></pre>
+<pre><code>## n_heads
+##    46    47    48    49    50    51    52    53    54    55    56    57 
+## 0.001 0.002 0.005 0.006 0.009 0.030 0.039 0.060 0.098 0.145 0.139 0.161 
+##    58    59    60    61    62    63 
+## 0.127 0.096 0.051 0.023 0.007 0.001</code></pre>
+<pre class="r"><code>mean(n_heads)</code></pre>
+<pre><code>## [1] 56.08</code></pre>
+<pre class="r"><code>sd(n_heads)</code></pre>
+<pre><code>## [1] 2.622304</code></pre>
+<p>Is there uncertainty in these summaries? Yes! So, how do we understand and communicate those uncertainties? Well, we could just wrap our simulation inside another simulation!</p>
+<p><img src="images/simulation-meme.jpg" /></p>
 </div>
 
 

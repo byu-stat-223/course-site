@@ -1,0 +1,17 @@
+---
+title: "Board Game Simulation"
+output: html_document
+---
+
+### Setup
+Imagine a board game using two dice. A player starts on "Go!" and does not get to
+leave until he/she rolls an eleven or higher. How many rolls, on average, must be
+made? What is the standard deviation of the required number of rolls?
+
+### Solution 1
+```{r}
+
+```
+
+
+### Solution 2

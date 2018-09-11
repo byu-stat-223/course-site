@@ -3,6 +3,47 @@ title: "Notes"
 output: html_document
 ---
 
+<!--
+#### 2018-09-13
+
+*Prayer is a supernal gift of our Father in Heaven to every soul. Think of it: the absolute Supreme Being, the most all-knowing, all-seeing, all-powerful personage, encourages you and me, as insignificant as we are, to converse with Him as our Father.*
+
+\- Richard G. Scott ([GC April 2007](https://www.lds.org/general-conference/2007/04/using-the-supernal-gift-of-prayer?lang=eng))
+
++ Announcements:
++ R Moment: [r2d3](https://rstudio.github.io/r2d3/)
++ [Homework 2](hw2.html) is assigned
+
+-->
+
+#### 2018-09-11
+
+*Obedience opens the door to the constant companionship of the Holy Ghost. And 
+the spiritual gifts and abilities activated by the power of the Holy Ghost enable 
+us to avoid deception—and to see, to feel, to know, to understand, and to remember t
+hings as they really are. You and I have been endowed with a greater capacity for 
+obedience precisely for these reasons.*
+
+\- David A. Bednar ([Ensign June 2010](https://www.lds.org/ensign/2010/06/things-as-they-really-are?lang=eng))
+
++ Announcements:
+  + [rstudio::conf](https://www.rstudio.com/conference/)
+    + January 15 - 18 in Austin, TX
+    + Large academic discounts available (sign up with .edu email)
+    + Seriously, this is the best conference ever
++ R Moment: [gganimate](https://github.com/thomasp85/gganimate)
++ A word about [RStudio Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+  + *RStudio projects make it straightforward to divide your work into multiple 
+  contexts, each with their own working directory, workspace, history, and source 
+  documents.*
++ Fixing git and GitHub
++ Getting started with [Homework 1](hw1.html)
++ [Confidence intervals](http://onlinestatbook.com/2/estimation/mean.html) to 
+assess Monte Carlo (simulation) error
++ Additional simulation study examples:
+  + [Demonstration of central limit theorem](l03_central_limit_theorem.nb.html)
+  + [Reflipping coins when tails](l03_flipping_coins.nb.html)
+
 #### 2018-09-06
 
 *I testify that his intelligence is vastly superior in every field to the very 
@@ -35,7 +76,7 @@ in both perfect love and perfect humility. His brilliance is not the
     + and many others...
   + Especially useful when theoretical derivations are unavailable, difficult, 
     or intractable.
-+ [Flipping coins](l02_coins.html)
++ [Flipping coins](l02_coins.html) | [code](l02_coins.Rmd)
 
 #### 2018-09-04
 

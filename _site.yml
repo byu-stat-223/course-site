@@ -1,5 +1,5 @@
 name: "BYU Stat 223: Applied R Programming"
-output_dir: "docs"
+output_dir: "."
 navbar:
   title: "Stat 223"
   left:

@@ -1,0 +1,117 @@
+---
+title: "Central Limit Theorem"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+
+The [Central Limit Theorem](https://en.wikipedia.org/wiki/Central_limit_theorem)
+is "a key concept in probability theory because it implies that probabilistic and 
+statistical methods that work for normal distributions can be applicable to many
+problems involving other types of distributions."
+
+Consider a right skewed distribution (e.g Binomial(10, 0.1))
+
+```{r}
+n_trials <- 10
+pr_success <- 0.1
+
+x <- 0:n_trials
+y <- dbinom(x, n_trials, pr_success)
+```
+
+Now let's visualize our results.
+
+```{r}
+plot(NA, xlim = c(0, n_trials), ylim = c(0, 0.4))
+invisible(sapply(1:length(x), function(i) lines(c(x[i], x[i]), c(0, y[i]))))
+```
+
+```{r}
+library(tidyverse)
+
+tibble(x, y) %>% 
+  ggplot(aes(x = x, y = y)) +
+  ggalt::geom_lollipop()
+```
+
+Now, let's construct sampling distributions of the mean when samples of size 40
+are drawn from this population.
+
+```{r}
+sample_size <- 40
+n_draws <- 1000
+```
+
+#### For Loop
+
+```{r}
+sample_means <- numeric(n_draws)
+for (i in seq_along(sample_means)) {
+  sample_means[i] <- mean(rbinom(sample_size, n_trials, pr_success))
+}
+```
+
+Now, let's investigate the resulting sample means.
+
+```{r}
+hist(sample_means)
+```
+
+```{r}
+mean(sample_means)
+```
+
+```{r}
+var(sample_means)
+```
+
+#### sapply
+
+```{r}
+sample_means <- sapply(1:n_draws, function(x){
+ mean(rbinom(sample_size, n_trials, pr_success))
+})
+```
+
+
+#### Tidyverse
+
+```{r}
+library(tidyverse)
+
+sample_means <- rerun(n_draws, rbinom(sample_size, n_trials, pr_success)) %>% 
+  map_dbl(mean)
+```
+
+
+---
+
+Write a function whose input is `n`, `n_trials`, `pr_success`, and `n_draws`
+which returns the mean of `n_draws` samples of size `n` from a Binomial(`n_trials`,
+`pr_success`) distribution. Let `n_draws` be 1000 by default.
+
+```{r}
+sample_dist <- function(n, n_trials, pr_success, n_draws = 1000) {
+  replicate(n_draws, mean(rbinom(n, n_trials, pr_success)))
+}
+```
+
+```{r}
+demo_sample_dist <- function(n) {
+  hist(sample_dist(sample_size, n_trials, pr_success), breaks = 30, freq = FALSE)
+  x <- seq(0, 3, length = 1000)
+  pop_mean <- n_trials * pr_success
+  pop_variance <- pop_mean * (1 - pr_success) / n
+  lines(x, dnorm(x, pop_mean, sqrt(pop_variance)), col = "red")
+}
+```
+
+```{r}
+demo_sample_dist(40)
+```
+
+This is a manifestation of the Central Limit Theorem.

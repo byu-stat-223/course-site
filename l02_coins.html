@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Coin Flip Simulation</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Stat 223</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li>
+  <a href="notes.html">Notes</a>
+</li>
+<li>
+  <a href="assignments.html">Assignments</a>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Coin Flip Simulation</h1>
+
+</div>
+
+
+<div id="single-coin" class="section level3">
+<h3>Single coin</h3>
+<p>Randomly sample one value from the set [0, 1] where the probability of 0 is 3/4 and the probability of 1 is 1/4.</p>
+<pre class="r"><code>sample(c(0, 1), 1, prob = c(3/4, 1/4))</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>Simulate the process of tossing a bent coin one time, where the probability of a head is p = 1/4</p>
+<pre class="r"><code>sample(c(0, 1), 1, prob = c(3/4, 1/4))</code></pre>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="multiple-coins" class="section level3">
+<h3>Multiple coins</h3>
+<p>Simulate the process of tossing a bent coin 60 times, where the probability of a head is p = 1/4.</p>
+<pre class="r"><code>sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
+<pre><code>##  [1] 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 1 0 1 0 1 1 1 1 0
+## [36] 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 1 0 0 1 0 0 0</code></pre>
+<pre class="r"><code>sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
+<pre><code>##  [1] 0 1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 1 0 0 1 1 0 0 1 0
+## [36] 0 0 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 0 0 0</code></pre>
+<p>Notice that the results above are different - why?</p>
+<p>You can use <code>set.seed()</code> to ensure results are identical when random elements are involved.</p>
+<pre class="r"><code>set.seed(35487)
+sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
+<pre><code>##  [1] 0 0 0 0 1 0 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 1 0 1 0 0 1 1 0 0 0 0 0
+## [36] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0</code></pre>
+<pre class="r"><code>set.seed(35487)
+sample(c(0, 1), 60, prob = c(3/4, 1/4), replace = TRUE)</code></pre>
+<pre><code>##  [1] 0 0 0 0 1 0 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 1 0 1 0 0 1 1 0 0 0 0 0
+## [36] 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0</code></pre>
+</div>
+<div id="simulation-study" class="section level3">
+<h3>Simulation study</h3>
+<p>Now that we have the building blocks, we’ll simulate this process multiple times to provide a reliable estimate of the average number of heads out of 60 tosses. There are multiple approaches that can be used here, and we’ll look at each one.</p>
+<p>In order to build these simulation examples, let’s setup a few things first. We’ll define the number of simulations we run as <code>n_sims</code> and we’ll also create a function for a single “run” of the simulation.</p>
+<pre class="r"><code>n_sims &lt;- 1000
+
+flip_coins &lt;- function(n_flips = 60) {
+  sample(c(0, 1), n_flips, prob = c(3, 1), replace = TRUE)
+}</code></pre>
+<pre class="r"><code>flip_coins()</code></pre>
+<pre><code>##  [1] 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 1 0 0 0
+## [36] 1 0 0 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0 1 0 1 0 1 0 0</code></pre>
+<div id="for-loop" class="section level4">
+<h4>For Loop</h4>
+<p>For loops are a staple programming concept. However, given R’s ability to vectorize operations and other R-centric functions (the <code>apply</code> family), there are often better ways to iterate through objects.</p>
+<pre class="r"><code>heads &lt;- numeric(n_sims)
+for (i in seq_along(heads)) {
+  heads[i] &lt;- sum(flip_coins())
+}
+
+heads</code></pre>
+<pre><code>##    [1] 13 11 12 15 14 14 10 13 18  9 19 14 16 11 12 14 18 13 15 16 11 13 21
+##   [24] 17 16 13 21 16 14  9 18 17 13 13 13 12 13 16 12 16 14 14 19 20 17 15
+##   [47] 17 19 21 13  9 14 11 10 19 16  8 18 15 13 10 12 17 13 17 13 12 10 15
+##   [70] 12 17 16 10 11 14 12 11 14 19 12 12 16 15 13 17 19 15 13 17 11 10 16
+##   [93]  4 17 13 21 16 17 15 10 13 17 11  8 15 17 17 16 15 20 13 20 17 19 14
+##  [116] 16 15 11 15 13 19 12 17 21 12 14 15 15 19 17 18 14 17 10 17 15 17 15
+##  [139] 18 17 11 17 12 16 17  9 15 21 17 17 16 19 18 14 17 14 14 21 11  9 16
+##  [162] 14 16 15 12 20 14 14 15 16 10 13  8 20 17 17 14 16 12 13 12 11 13 10
+##  [185] 17 16 17 12 20 19 15 15 10 17 14  9 16 14 19 16 20 14 13 15 15 12 10
+##  [208] 11 14 12 14 13 12 17 11 14  6 13 12 14 18 17 15 12 24 13 17 14 13 17
+##  [231] 16 16 12 17 15 17 11 17 19 17 16 13 16 14 10 26 14 15 15 14 14 21 16
+##  [254] 21 11 17 12 16 17 12 17 11 14 14 15 12 14 12 10 19 12 16 16 14 16 11
+##  [277] 15 14 14 10 13 14 20 18 15 17 13 16 26 13 21 17 11 16 19 22 20 18 20
+##  [300] 14 14 17 19 20 17 13 19 18 10 10 14 14 16 14 17 16 10 13 17 16 20 18
+##  [323] 18 14 10 11 13 15 15 14 15 21 22 15 16 18 14  9 14 11 12 18 13 10 12
+##  [346] 19 17 17 15 17 10 14 14 26 13 17 20 11 15 13 15 13 17  9 11 12  9 11
+##  [369] 10 17 20 18 13 18 17 16 13 14 11  9 17 18 14 19 12 15 12 13 20 20 17
+##  [392] 16 15 15 18 11 17 15 15 13 20 13 13 19 10 19 14 14 12 17 18 14 11 18
+##  [415] 20 16 15 18 13 17 18 21 14 14 18 17 14 15 14 17 13 16 13 10 15 19 11
+##  [438] 14 18 14 10 15 11 20 21 16 20 18 19 13 22 13 15 21 12 14 14 17 13 20
+##  [461] 10 17 11 19 19 15 14 21 18 17 24 16 16 12 20 15 16 11  9 13 16 14 13
+##  [484] 20 16 22 16 16 13  9 16 10 20 13 17 13 19 17 16 12 19 10 10 16 13 16
+##  [507] 15 12 18 15 10 10 20 18 15 12 19 18 11 17 16 11 14 15 18 15 10 11 12
+##  [530] 20 16  7 14 13 15 18 12 13 18 18 15 12 12 16 16 18 14 14 14 20 17 16
+##  [553] 10 18 22 15 17 19 12 20 17 10 14 17 13 13 18 14 11 14 12 18 16 14 17
+##  [576] 11 19 17 15 16 16 17 15 12 19 13 16 12 13 13 13 16 14 12 16 19 19 14
+##  [599] 14 20 18 13  9 19 19 22 12 15 11 17 18 16 12 17 14 17 17 18 12 14 19
+##  [622] 17 15  8 17 13 13 18 22 10 17 11 11 18 17 18 17 19 14 19 16 14 16 19
+##  [645] 17 15 11 18 19 20 12 23 11 19 11 15 15 12 11 20 12 12 21 19 15 18 17
+##  [668] 17 15 11 18 13 16 12  9 12 17 11 12 16 11 12 19 16 19 16 17 19  9 13
+##  [691] 16 12 15 17 20 14 16 16 14 19  9 16 25 15 11 14 13 17 11 14 23 19 23
+##  [714] 13 15 25 19 21  9 14 13 15 15 13 10 18 17 12 19 16 17  9 22 12 19 15
+##  [737]  9 14 13 10 15 12 15 18 12 13 13 19 17 15  9 17 10 15 14 17 20 17 11
+##  [760] 21 21 15 15  8 15 16 15 12 12 14 14 12 12 20 12 15 11 15 18 15 14 15
+##  [783] 20 12 18 16 18 15 15 15 24 17 18 17 16 11 19 16 12 11 17 12 19 15 12
+##  [806] 11 12 15 16  9 17 17 17 16 14 17 13 13 17  8 13 20 21 20 14 16 16 19
+##  [829] 13 10 19 16  8 16 15 18 14 12 13 12 12 17 16 13 13 11  9 17 17 13 20
+##  [852] 17 14 15 17 14 15 13 15 15 21 16 15 14 16 15 14 18 18 20 19 15 19  8
+##  [875] 19 16 17 10 16 15 17 18 20 14 19 16 13 16 17  9 10 14 17 10 13 19 11
+##  [898] 18 18 18 16 17 17 18 12 15  7 11 17 16 20 13  9 15 16 15  6 18 15 14
+##  [921] 12 13 14 19 19 16 21 14 18 19 14 18  8 15 11 19 11 11 16  8 14 15 16
+##  [944] 12 14 16 16 17 14 13 15 19 13 16 21 14  8 13 17  7 15 13  9 12 11 14
+##  [967] 19 13 15 14 10 14 13 14 14 16 15 13 12 15 16 13 19 13 12 10 15 12 11
+##  [990] 15 17 11 15 18 14 12 11 10 20 16</code></pre>
+<p>Now that we have the number of heads that appeared in 1000 simulations of flipping this coin 60 times, we can compute the average number of heads that appear in this scenario.</p>
+<pre class="r"><code>mean(heads)</code></pre>
+<pre><code>## [1] 14.994</code></pre>
+</div>
+<div id="sapply-function" class="section level4">
+<h4>Sapply function</h4>
+<pre class="r"><code>heads &lt;- sapply(1:n_sims, function(x) sum(flip_coins()))</code></pre>
+</div>
+<div id="replicate-function" class="section level4">
+<h4>Replicate function</h4>
+<p><code>replicate</code> is part of the <code>apply</code> family and it lends itself well to simulation studies.</p>
+<pre class="r"><code>heads &lt;- replicate(n = n_sims, sum(flip_coins()))</code></pre>
+</div>
+<div id="tidyverse" class="section level4">
+<h4>Tidyverse</h4>
+<p>The <a href="https://www.tidyverse.org/">tidyverse</a> &quot; is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.&quot;</p>
+<p>The <code>purrr</code> package is part of the <code>tidyverse</code> and provides an alternative to the <code>apply</code> family of functions.</p>
+<pre class="r"><code># install.packages(&quot;tidyverse&quot;)
+library(tidyverse)
+
+rerun(n_sims, flip_coins()) %&gt;% 
+  map_dbl(sum) %&gt;% 
+  mean()</code></pre>
+<pre><code>## [1] 15.154</code></pre>
+</div>
+</div>
+<div id="calculations" class="section level3">
+<h3>Calculations</h3>
+<p>So far, we’ve used our simulated data to determine the average number of heads in a set of 60 unfair coin flips. We can also use this data to calculate other metrics.</p>
+<p>Determine the variance of the number of heads in 60 coin flips.</p>
+<pre class="r"><code>var(heads)</code></pre>
+<pre><code>## [1] 11.63123</code></pre>
+<p>We can also find the probability that the number of heads in 60 tosses is greater than 20.</p>
+<pre class="r"><code>mean(heads &gt; 20)</code></pre>
+<pre><code>## [1] 0.058</code></pre>
+<p>Finally, we can ind the 20th percentile of the number of heads in 60 tosses.</p>
+<pre class="r"><code>quantile(heads, 0.25)</code></pre>
+<pre><code>## 25% 
+##  13</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
