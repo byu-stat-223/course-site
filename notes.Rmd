@@ -19,6 +19,10 @@ Possible R Moments:
 \- Richard G. Scott ([GC April 2007](https://www.lds.org/general-conference/2007/04/using-the-supernal-gift-of-prayer?lang=eng))
 
 + Announcements:
+  + *Do you have questions about graduate school? The Integrated program? When
+  to apply? What steps you need to take to apply? If so, we would like to invite
+  you to an info session to learn about graduate school and our Integrated program.
+  The info session will be held on Thursday, October 4 at 11:00am in 1105 JKB.*
 + R Moment: [r2d3](https://rstudio.github.io/r2d3/)
 + git and GitHub - the final chapter
 + [Homework 1](hw1.html) in class walkthrough
