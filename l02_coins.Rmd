@@ -5,6 +5,7 @@ output: html_notebook
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = TRUE)
+set.seed(35487)
 ```
 
 
