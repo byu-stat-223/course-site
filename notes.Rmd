@@ -4,6 +4,14 @@ output: html_document
 ---
 
 <!--
+Possible R Moments:
+- Reticulate
+- blogdown
+- plumber
+- opencpu
+
+-->
+
 #### 2018-09-13
 
 *Prayer is a supernal gift of our Father in Heaven to every soul. Think of it: the absolute Supreme Being, the most all-knowing, all-seeing, all-powerful personage, encourages you and me, as insignificant as we are, to converse with Him as our Father.*
@@ -12,16 +20,22 @@ output: html_document
 
 + Announcements:
 + R Moment: [r2d3](https://rstudio.github.io/r2d3/)
++ git and GitHub - the final chapter
++ [Homework 1](hw1.html) in class walkthrough
 + [Homework 2](hw2.html) is assigned
++ [Confidence intervals](http://onlinestatbook.com/2/estimation/mean.html) to 
+assess Monte Carlo (simulation) error
++ Additional simulation study examples:
+  + [Demonstration of central limit theorem](l03_central_limit_theorem.nb.html)
+  + [Reflipping coins when tails](l03_flipping_coins.nb.html)
 
--->
 
 #### 2018-09-11
 
 *Obedience opens the door to the constant companionship of the Holy Ghost. And 
 the spiritual gifts and abilities activated by the power of the Holy Ghost enable 
-us to avoid deception—and to see, to feel, to know, to understand, and to remember t
-hings as they really are. You and I have been endowed with a greater capacity for 
+us to avoid deception—and to see, to feel, to know, to understand, and to remember 
+things as they really are. You and I have been endowed with a greater capacity for 
 obedience precisely for these reasons.*
 
 \- David A. Bednar ([Ensign June 2010](https://www.lds.org/ensign/2010/06/things-as-they-really-are?lang=eng))
@@ -38,11 +52,6 @@ obedience precisely for these reasons.*
   documents.*
 + Fixing git and GitHub
 + Getting started with [Homework 1](hw1.html)
-+ [Confidence intervals](http://onlinestatbook.com/2/estimation/mean.html) to 
-assess Monte Carlo (simulation) error
-+ Additional simulation study examples:
-  + [Demonstration of central limit theorem](l03_central_limit_theorem.nb.html)
-  + [Reflipping coins when tails](l03_flipping_coins.nb.html)
 
 #### 2018-09-06
 
