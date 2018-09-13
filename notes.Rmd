@@ -28,11 +28,7 @@ Possible R Moments:
   + [Introduce yourself to git](http://happygitwithr.com/hello-git.html)
   + [Register ssh keys](http://happygitwithr.com/ssh-keys.html#create-an-ssh-key-pair)
 + [Homework 1](hw1.html) in class walkthrough
-
-<!--
-+ [Homework 1 solutions]() 
--->
-
+  + Homework 1 solutions
 + [Homework 2](hw2.html) is assigned
 + [Confidence intervals](http://onlinestatbook.com/2/estimation/mean.html) to 
 assess Monte Carlo (simulation) error
