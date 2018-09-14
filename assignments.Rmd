@@ -3,7 +3,7 @@ title: "Assignments"
 output: html_document
 ---
 
-#### [Homework 1](hw1.html) | *Due 2018-09-14 at 8pm*
+#### [Homework 1](hw1.html) | *Due 2018-09-14 at 8pm* | [Solutions](hw1_solutions.html)
 #### [Homework 2](hw2.html) | *Due 2018-09-20 at 8pm*
 #### Homework 3 | *Due 2018-09-27 at 8pm*
 #### Homework 4 | *Due 2018-10-04 at 8pm*

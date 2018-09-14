@@ -1,0 +1,14 @@
+---
+title: "Homework 1 Solutions"
+date: "Due 2018-09-14 at 8pm"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
++ [Clothes](hw1_clothes_sol.R)
++ [Cheese](hw1_cheese_sol.R)
++ [Fibonacci](hw1_fib_sol.R)
+
