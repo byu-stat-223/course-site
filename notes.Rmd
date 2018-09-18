@@ -10,7 +10,34 @@ Possible R Moments:
 - plumber
 - opencpu
 
+#### 2018-09-20
+
+*If sometimes the harder you try, the harder it gets, take heart. So it has been
+with the best people who ever lived.*
+
+\- Jeffrey R. Holland ([Ensign February 1984](https://www.lds.org/languages/eng/content/ensign/1984/02/the-inconvenient-messiah))
+
++ Announcements
+
+
 -->
+
+#### 2018-09-18
+
+*Face your doubts. Master your fears. “Cast not away therefore your confidence.”
+Stay the course and see the beauty of life unfold for you.*
+
+\- Jeffrey R. Holland ([BYU Devotional March 2, 1999](https://speeches.byu.edu/talks/jeffrey-r-holland_cast-not-away-therefore-your-confidence/))
+
++ Announcements:
+  + BYU beats Wisconsin
+  + Alabama beats Ole Miss
+  + Office Hours update
+  + git pull
++ R Moment: [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
++ [Confidence Intervals](l04_ci.nb.html)
++ [HW 1 Solutions](hw1_solutions.html)
++ [HW 2 Preview](hw2.html)
 
 #### 2018-09-13
 
