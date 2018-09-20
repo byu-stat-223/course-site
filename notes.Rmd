@@ -20,6 +20,7 @@ with the best people who ever lived.*
 \- Jeffrey R. Holland ([Ensign February 1984](https://www.lds.org/languages/eng/content/ensign/1984/02/the-inconvenient-messiah))
 
 + Announcements:
+
   [![](https://imgs.xkcd.com/comics/curve_fitting.png)](https://xkcd.com/2048/)
   + Come during scheduled office hours or email ahead of time
 + R Moment: [Local Interpretable Model-agnostic Explanations (lime)](https://github.com/thomasp85/lime)
