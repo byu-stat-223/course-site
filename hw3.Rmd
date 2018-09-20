@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 + Follow [this link](https://classroom.github.com/a/ba2cML_f) to create your 
-repository for homework 2.
+repository for homework 3.
 
 + Once your repository is created, create a new RStudio project based on that
 repository.
