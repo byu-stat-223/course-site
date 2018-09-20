@@ -1,0 +1,137 @@
+---
+title: "Mean"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+Consider the following data:
+
+```{r}
+x <-
+  c(2.11,
+    0.87,
+    0.95,
+    1.51,
+    0.28,
+    1.45,
+    0.18,
+    0.52,
+    -1.16,
+    -0.56,
+    0.13,
+    0.65,
+    -0.01,
+    0.95,
+    -1.95)
+```
+
+Given this data, we have the following assumptions:
+
+* Independence
+* Known standard deviation
+* Normally distributed population
+
+In this case, our known population standard deviation is 1.
+
+```{r}
+sigma <- 1
+```
+
+We want to conduct the following hypothesis test:
+
+$$
+H_0: \mu = 0
+$$
+
+$$
+H_a: \mu > 0
+$$
+
+$$
+\alpha = 0.05
+$$
+
+First, we'll create a function using the following formula to give us our z test
+statistic.
+
+$$
+z = \frac{\bar{x} - \mu}{\sigma / \sqrt{n}}
+$$
+
+```{r}
+alpha <- 0.05
+z_test_stat <- function(x, mu, sigma) {
+  x_bar <- mean(x)
+  n <- length(x)
+  (x_bar - mu) / (sigma / sqrt(n))
+}
+```
+
+Now we'll conduct the hypothesis test.
+
+```{r}
+z <- z_test_stat(x, 0, 1)
+z
+```
+
+```{r}
+p_val <- pnorm(z, mean = 0, sd = 1, lower.tail = FALSE)
+p_val
+```
+
+What is the critical value (how big does `z` need to be)?
+```{r}
+critical_val <- qnorm(alpha, mean = 0, sd = 1, lower.tail = FALSE)
+critical_val
+```
+
+Conclusion: Fail to reject $H_0$ since p-value is greater than $\alpha = 0.05$.
+
+This approach requires theory to know that the sampling distribution of the Z
+statistic has a standard normal distribution.
+
+We could instead use a simulation study to find the sampling distribution of Z
+and compute p-values, power, etc.
+
+```{r}
+simulate <- function(n, mu, sd, n_reps = 1000) {
+  replicate(n_reps, z_test_stat(rnorm(n, mu, sd), mu, sd))
+}
+```
+
+```{r}
+test_stat_under_h0 <- simulate(length(x), 0, 1)
+test_stat_under_h0
+```
+
+```{r}
+hist(test_stat_under_h0)
+```
+
+Now that we have a distribution of test statistics, we can once again perform
+our hypothesis test, this time leaning on our simulation instead of leaning on 
+theory.
+
+```{r}
+p_val <- mean(test_stat_under_h0 >= z)
+```
+
+```{r}
+ci <- function(x) {
+  p <- mean(x)
+  ci <- p * qnorm(0.975) * sqrt(p * (1 - p) / length(x))
+  c(lower = p - ci,
+    p_value = p,
+    upper = p + ci)
+}
+
+ci(test_stat_under_h0 >= z)
+```
+
+
+
+
+

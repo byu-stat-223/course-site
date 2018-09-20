@@ -1,0 +1,83 @@
+---
+title: 'In Class Practice'
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+## Costume Party
+Suppose you're attending a Marvel costume party. There are 10 people invited, and
+the host has specified that everyone should choose from one of the following 10 
+costumes:
+
+* Spiderman
+* Black Panther
+* Scarlet Witch
+* Iron Man
+* Black Widow
+* The Wasp
+* Thanos
+* Gamora
+* Groot
+* Captain Marvel
+
+Unfortunately, you arrive early (well, on time, but you know, BYU standard time).
+As guests arrive, you grow nervous that someone will be wearing your same costume.
+As the number of guests grows, what's the probability that someone is waering your
+same costume? Be sure to assess the monte carlo error of your estimate.
+
+```{r, eval = FALSE}
+# Write a function with the following parameters:
+#   n: the number of people at the party (not counting yourself)
+#   n_reps: the number of times to run the simulation
+# This function should return a numeric vector of length 3 containing an estimate
+# of the probability that someone is wearing your same costume for the given value
+# of n along with the upper and lower bounds of your confidence interval.
+
+costume_party <- function(n, n_reps = 1000) {
+  my_costume <- sample(1:10, 1)
+  proportion <- mean(replicate(n_reps, any(sample(1:10, n, replace = TRUE) == my_costume)))
+  ci <- qnorm(0.975) * sqrt(proportion * (1 - proportion) / n_reps)
+  data.frame(proportion = proportion, 
+             lower_bound = proportion - ci,
+             upper_bound = proportion + ci)
+}
+
+purrr::map_df(1:10, costume_party)
+```
+
+
+## Rolling in the deep
+Suppose you're playing a game using a six sided dice. The object of the game is 
+to roll each number at least once. What's the expected number of rolls it takes
+until each number has been rolled once? Be sure to assess the monte carlo error 
+of your estimate.
+
+Now, what happens in this scenario with a 10 sided dice? What about a 20 sided 
+dice?
+
+```{r, eval = FALSE}
+# Write a function with the following parameters:
+#   n: number of sides on the dice
+# This function should return the number of rolls it took to roll all n sides at
+# least once.
+roll_dice <- function(n = 6) {
+  numbers_rolled <- numeric(n)
+  while(any(numbers_rolled == 0)) {
+    i <- sample(1:n, 1)
+    numbers_rolled[i] <- numbers_rolled[i] + 1
+  }
+  
+  sum(numbers_rolled)
+}
+
+# Using the function previously defined, simulate this action thousands of times
+# to determine the expected number of rolls needed to roll each side at least once.
+# Assess the monte carlo error of the estimate.
+n_reps <- 1000
+sim_results <- replicate(n_reps, roll_dice())
+mean(sim_results)
+```
+
