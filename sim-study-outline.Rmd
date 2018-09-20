@@ -1,0 +1,33 @@
+---
+title: "Simulation Study Outline"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+In a simulation study we're often interested in exploring the behavior of a sample 
+statistic (ie the total number of coins that are heads). The following provides 
+a general guideline for building simulation studies in R.
+
+1. Create a function that performs a single simulation and returns the value of 
+importance.
+    - This value may be the total count of something, a proportion, or any other 
+    summary statistic calculated based on a **single sample**.
+2. Using the function previously created, run thousands of simulations and capture 
+the results.
+    - After this step, you will have thousands of values, each representing the 
+    result of a single simulation.
+3. Given the collection of values resulting from step 2, calculate the value you
+set out to determine.
+    - This caculation takes the thousands of values previously calculated and
+    condenses them into a single summary value (ie mean, proportion, etc).
+4. Caculate Monte Carlo (simulation) error.
+    - Calculate a confidence interval around the summary statistic calculated in
+    step 3. This confidence interval is a function of the summary statistic itself 
+    as well as the number of simulations performed (the size of your sample).
+    
+Note:
+It can be useful to wrap all the above steps into a single function so that 
+multiple simulations can be easily performed.
