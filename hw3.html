@@ -11,7 +11,7 @@
 
 
 
-<title>Assignments</title>
+<title>Homework 3</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -217,29 +217,36 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Assignments</h1>
+<h1 class="title toc-ignore">Homework 3</h1>
+<h4 class="date"><em>Due 2018-09-27 at 8pm</em></h4>
 
 </div>
 
 
-<div id="homework-1-due-2018-09-14-at-8pm-solutions" class="section level4">
-<h4><a href="hw1.html">Homework 1</a> | <em>Due 2018-09-14 at 8pm</em> | <a href="hw1_solutions.html">Solutions</a></h4>
-</div>
-<div id="homework-2-due-2018-09-20-at-8pm" class="section level4">
-<h4><a href="hw2.html">Homework 2</a> | <em>Due 2018-09-20 at 8pm</em></h4>
-</div>
-<div id="homework-3-due-2018-09-27-at-8pm" class="section level4">
-<h4><a href="hw3.html">Homework 3</a> | <em>Due 2018-09-27 at 8pm</em></h4>
-</div>
-<div id="homework-4-due-2018-10-04-at-8pm" class="section level4">
-<h4>Homework 4 | <em>Due 2018-10-04 at 8pm</em></h4>
-</div>
-<div id="homework-5-due-2018-10-11-at-8pm" class="section level4">
-<h4>Homework 5 | <em>Due 2018-10-11 at 8pm</em></h4>
-</div>
-<div id="homework-6-due-2018-10-16-at-8pm" class="section level4">
-<h4>Homework 6 | <em>Due 2018-10-16 at 8pm</em></h4>
-</div>
+<ul>
+<li><p>Follow <a href="https://classroom.github.com/a/ba2cML_f">this link</a> to create your repository for homework 2.</p></li>
+<li><p>Once your repository is created, create a new RStudio project based on that repository.</p></li>
+<li><p>Confidence Interval on a Proportion</p>
+<ul>
+<li><p>You flick a tack 50 times and finds that it points up 18 times. Being a budding statistician, you readily compute a 95% confidence interval on the probability that the tack points up using the usual STAT 121 formula: <span class="math display">\[
+\hat{p} \pm 1.96 \sqrt{\hat{p}(1-\hat{p})/n}
+\]</span> where <span class="math inline">\(n=50\)</span> and, for the data you collected, <span class="math inline">\(\hat{p}=18/50\)</span> so the confidence interval is (0.23,0.49).</p></li>
+<li><p>You then recall that this confidence interval procedure is based on a central limit theorem which assumes a large sample size. Thus, despite being named a “95% confidence interval,” the procedure may not have 95% coverage in finite (e.g., <span class="math inline">\(n=50\)</span>) samples. What is the coverage of this confidence interval procedure if the actual probability that the tack points up is 0.4? Remember to assess your Monte Carlo error! Solve the problem by performing a simulation study in an R script called <code>tack.R</code> (or <code>tack.Rmd</code>).</p></li>
+</ul></li>
+<li><p>“Let’s Make a Deal”</p>
+<ul>
+<li><p>Wikipedia provides context for this problem, known as the <a href="https://en.wikipedia.org/wiki/Monty_Hall_problem">Monty Hall Problem</a>.</p></li>
+<li><p>Essentially, the idea is this: You’re on a game show and you are presented with 3 doors. Behind one door is a fabulous grand prize (let’s say it’s a new car so you no longer have to deal with the UVX bus). Behind the other two doors are less fabulous prizes (for fun, let’s say each of the other two doors is concealing an old goat). You’re goal, obviously, is to select the door concealing the car.</p></li>
+<li><p>To start the game, you select a door you believe is concealing the grand prize. The show host then opens one of the remaining doors, revealing an old goat. You now have the option to either stick with your initial choice, or select the other remaining door.</p></li>
+<li><p>This question was posed to the “Ask Marilyn” column of <em>Parade</em> magazine in 1990 as follows:</p></li>
+</ul>
+<p><em>“Suppose you’re on a game show, and you’re given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what’s behind the other doors, opens another door, say No. 3, which has a goat. He then says to you, ‘Do you want to pick door No. 2?’ Is it to your advantage to take the switch?”</em></p>
+<ul>
+<li><p>The answer given by Marilyn von Savant (author of the Ask Marilyn column) was that the contestant should switch to the other door. Nearly 10,000 readers responded to this response, many of them claiming it was incorrect.</p></li>
+<li><p>Your task consists of arguing empirically whether Marilyn Vos Savant is correct. In an R script named <code>deal.R</code> (or <code>deal.Rmd</code>), write a simulation study that replicates the game show as much as possible (i.e., randomly choosing doors, etc.). Implement both strategies (i.e., “do not switch” versus “switch”). Give the probability of winning under each of the strategies. Quantify your uncertainity about the emperically estimated probabilities by forming a confidence intervals on the proportions of wins.</p></li>
+</ul></li>
+<li><p><strong>Make sure you commit your changes to git and push to GitHub</strong></p></li>
+</ul>
 
 
 
