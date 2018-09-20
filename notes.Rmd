@@ -10,6 +10,8 @@ Possible R Moments:
 - plumber
 - opencpu
 
+-->
+
 #### 2018-09-20
 
 *If sometimes the harder you try, the harder it gets, take heart. So it has been
@@ -17,10 +19,15 @@ with the best people who ever lived.*
 
 \- Jeffrey R. Holland ([Ensign February 1984](https://www.lds.org/languages/eng/content/ensign/1984/02/the-inconvenient-messiah))
 
-+ Announcements
-
-
--->
++ Announcements:
+  [![](https://imgs.xkcd.com/comics/curve_fitting.png)](https://xkcd.com/2048/)
+  + Come during scheduled office hours or email ahead of time
++ R Moment: [Local Interpretable Model-agnostic Explanations (lime)](https://github.com/thomasp85/lime)
++ [Simulation Study Outline](sim-study-outline.html)
++ [In class exercise](l05_practice.nb.html)
++ [Homework 2](hw2.html) Questions
++ [Hypothesis Test](l05_mean.nb.html)
++ [Homework 3](hw3.html) Assigned (Due 2018-09-27 at 8pm)
 
 #### 2018-09-18
 
@@ -36,8 +43,8 @@ Stay the course and see the beauty of life unfold for you.*
   + git pull
 + R Moment: [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 + [Confidence Intervals](l04_ci.nb.html)
-+ [HW 1 Solutions](hw1_solutions.html)
-+ [HW 2 Preview](hw2.html)
++ [Homework 1 Solutions](hw1_solutions.html)
++ [Homework 2 Preview](hw2.html)
 
 #### 2018-09-13
 
