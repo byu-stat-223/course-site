@@ -25,10 +25,10 @@ costumes:
 
 Unfortunately, you arrive early (well, on time, but you know, BYU standard time).
 As guests arrive, you grow nervous that someone will be wearing your same costume.
-As the number of guests grows, what's the probability that someone is waering your
+As the number of guests grows, what's the probability that someone is wearing your
 same costume? Be sure to assess the monte carlo error of your estimate.
 
-```{r, eval = FALSE}
+```{r}
 # Write a function with the following parameters:
 #   n: the number of people at the party (not counting yourself)
 #   n_reps: the number of times to run the simulation
@@ -37,8 +37,30 @@ same costume? Be sure to assess the monte carlo error of your estimate.
 # of n along with the upper and lower bounds of your confidence interval.
 
 costume_party <- function(n, n_reps = 1000) {
-  
+  my_costume <- sample(1:10, 1)
+  prop <- mean(replicate(n_reps, any(sample(1:10, n, replace = TRUE) == my_costume)))
+  ci <- prop * qnorm(0.975) * (prop * (1 - prop)) / n_reps
+  data.frame(
+    lower = prop - ci,
+    prop = prop,
+    upper = prop + ci
+  )
 }
+```
+
+```{r}
+costume_output <- purrr::map_df(1:30, costume_party, 50)
+costume_output
+```
+
+```{r}
+library(tidyverse)
+costume_output %>%
+  mutate(n = 1:n()) %>% 
+  ggplot(aes(x = n, y = prop)) +
+  geom_line() +
+  geom_line(aes(y = lower), col = "red") +
+  geom_line(aes(y = upper), col = "blue")
 ```
 
 
@@ -57,11 +79,29 @@ dice?
 # This function should return the number of rolls it took to roll all n sides at
 # least once.
 roll_dice <- function(n = 6) {
+  dice_counts <- numeric(n)
   
+  while(any(dice_counts == 0)) {
+    roll <- sample(1:n, 1)
+    dice_counts[roll] <- dice_counts[roll] + 1
+  }
+  
+  sum(dice_counts)
 }
 
 # Using the function previously defined, simulate this action thousands of times
 # to determine the expected number of rolls needed to roll each side at least once.
 # Assess the monte carlo error of the estimate.
+
+n_reps <- 10000
+roll_counts <- replicate(n_reps, roll_dice())
+
+expected_rolls <- mean(roll_counts)
+expected_rolls
 ```
 
+## True value for birthday problem
+```{r}
+n <- 2:75
+true_value <- 1 - (factorial(n) * choose(365, n)) / 365 ^ n
+```
