@@ -1,0 +1,167 @@
+---
+title: "Simulation Study for Simple Linear Regression"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+```
+
+Recall that the simple linear regression model is:
+
+$$
+y_i = \beta_0 + \beta_1 x_i + \epsilon_i \quad \text{for} ~ i=1,\ldots,n,
+$$
+
+where the error terms $\epsilon_1,\ldots,\epsilon_n$ are mean zero, independent, 
+and identically distributed random variables.
+
+Let $\hat{\beta}_1$ denote the parameter estimate of $\beta_1$. The bias
+$\hat{\beta}_1$ in estimating $\beta_1$ is defined as the expected (i.e., mean)
+value of $\hat{\beta}_1 - \beta_1$. A $100(1-\alpha_1)$% confidence interval for
+the slope $\beta_1$ (assuming independent, normally distributed errors) is 
+$\hat{\beta}_1 \pm t_{\alpha_1/2,\text{df}} ~ \hat{\sigma}_{\hat{\beta}_1}$, 
+where $\text{df}$ is
+the residual (a.k.a., error) degrees of freedom, $\hat{\sigma}_{\hat{\beta}_1}$
+is the standard error of the slope estimate, and $t_{\alpha_1/2,df}$ is the
+$\alpha_1/2$ upper quantile of the $t$-distribution with $\text{df}$ degrees of freedom.
+The coverage of a confidence interval estimator is the long-run relative
+frequency that the procedure generates intervals that contain the true value.
+
+The regression coefficients $\beta_0$ and $\beta_1$ can be estimated using the method of least-squares. In R, if x and y are numeric vectors of the same length, the least-squares parameter estimates, standard errors, degrees of freedom, etc. are obtained using: 
+
+```{r, eval=FALSE}
+fm <- lm(y ~ x)
+fm
+summary(fm)
+```
+
+While theory provides results on the bias and coverage in simple linear regression models, the goal is to perform a simulation study to investigate:
+
++ The bias in estimating the slope, and
++ The coverage of the $100(1-\alpha_1)$% confidence interval estimator for the slope based on the usual normality assumption. 
+
+The following function conducts such a simulation study. The arguments to the function are:
+
++ `regressor`: Independent variable passed as a numeric vector of arbitrary length.
++ `intercept`: True intercept passed as a numeric vector of length one.
++ `slope`: True slope passed as a numeric vector of length one.
++ `error_distribution`: Distribution of the error term passed as a character vector of length one, equaling one of:
+    + "normal": Error terms are independent and standard normally distributed.
+    + "chisq": Error term are independently chi-squared distributed with 0.5 degrees of freedom and shifted to the left by 0.5 (so that the mean of the error term is zero).  This has the effect of violating the normality assumption of the error terms $\epsilon$'s.
+    + "correlated": Error term for observation i is normally distributed with mean $0.2 z_i$ and variance 1, where $z_i = (x_i-\bar{x})/s$ is the standardized value of regressor for observation i.  This has the effect of making the error terms $\epsilon$'s correlated, thereby violating the independence assumption.
++ `n_reps`: Number of replications.
++ `alpha1`: Equals 1.0 minus the confidence coefficient for the confidence interval estimator of the slope. For example, for 95% confidence intervals on the slope, alpha1 = 0.05.
++ `alpha2`: Equals 1.0 minus the confidence coefficient for the confidence intervals of the bias and coverage probabilities. For example, for a 90% confidence interval on the bias, alpha2 = 0.10.
+
+```{r}
+slope_simulation <- function(
+  regressor,
+  intercept,
+  slope,
+  error_distribution = "normal",
+  n_reps,
+  alpha1,
+  alpha2
+) {
+  n <- length(regressor) # Number of observatiosn
+  z <- (regressor - mean(regressor)) / sd(regressor) # Used for correlated errors
+  count_in <- 0
+  difference <- numeric(n_reps)
+  for (i in 1:n_reps) {
+    if (error_distribution == "normal") {
+      error <- rnorm(n)
+    } else if (error_distribution == "chisq") {
+      error <- rchisq(n, 0.5) - 0.5
+    } else if (error_distribution == "correlated") {
+      error <- rnorm(n, 0.2 * z, 1)
+    } else {
+      stop("Unknown error distribution")
+    }
+    
+    response <- intercept + slope * regressor + error
+    fm <- lm(response ~ regressor)
+    
+    # Extract slope estimate
+    fit_slope <- fm$coefficients[2]
+    
+    # Calculate difference between slope estimate and slope
+    difference[i] <- fit_slope - slope
+    
+    # Confidence interval on fit_slope
+    slope_conf <- fit_slope + c(-1, 1) * qt(1 - alpha1/2, fm$df.residual) * summary(fm)$coefficients[2, "Std. Error"]
+    count_in = count_in + (slope_conf[1] < slope && slope < slope_conf[2])
+  }
+  
+  # Calculate coverage
+  coverage <- count_in / n_reps
+  
+  # Confidence interval on coverage
+  coverage_ci <- coverage + c(-1, 1) * qnorm(1 - alpha2/2) * sqrt((coverage  * (1 - coverage))/n_reps)
+  
+  # Bias estimate
+  bias <- mean(difference)
+  
+  # Confidence interval on bias
+  bias_ci <- bias + c(-1, 1) * qnorm(1 - alpha2/2) * sd(difference) / sqrt(n_reps)
+  
+  # Output
+  list(
+    coverage = c(
+      lower = coverage_ci[1],
+      estimate = coverage,
+      upper = coverage_ci[2]
+    ),
+    bias = c(
+      lower = bias_ci[1],
+      estimate = bias,
+      upper = bias_ci[2]
+    )
+  )
+}
+```
+
+For each iteration of the `n_reps` iterations of the simulation, randomly generate the response (i.e., dependent) vector using the supplied intercept, slope, regressor, and error term distribution. Fit the simple linear regression model and compute a $100(1-\alpha_1)$% confidence interval on the slope parameter. Record whether it contains the true slope. Also, record the difference between the slope estimate and its true value.
+
+The proportion of times that the confidence interval contains the true slope is a point estimate of the its coverage. Theory says that the coverage should be $1-\alpha_1$ when the usual regression assumptions are met. In addition to providing a point estimate of the coverage, you will provide a $100(1-\alpha_2)$% confidence interval on the coverage. (Use the normal approximation to the binomial, which is justified by the Central Limit Theorem since nreps is large.)
+
+The average difference between the slope estimate and its true value is a point estimate of the bias. In addition to providing a point estimate of the bias, you will provide a $100(1-\alpha_2)$% confidence interval on the bias. (Again, the Central Limit Theorem is applicable.)
+
+The function should return the following six elements:
+
+1. A point estimate of the bias in estimating the slope
+2. The lower bound of a $100(1-\alpha_2)$% confidence interval for the bias
+3. The upper bound of a $100(1-\alpha_2)$% confidence interval for the bias
+4. A point estimate of the coverage of the $100(1-\alpha_1)$% confidence interval estimator of the slope
+5. The lower bound of a $100(1-\alpha_2)$% confidence interval for the coverage
+6. The upper bound of a $100(1-\alpha_2)$% confidence interval for the coverage
+
+## Evaluate
+Consider the following questions:
+
++ Under what error terms is the estimator of the slope biased?
++ Does the confidence interval estimator have the right coverage under the normally distributed error terms?
++ What is the coverage under the chi-squared distributed error terms?
++ What is the coverage under the correlated error terms?
++ For the error terms in which the coverage is not correct, under what situation is it noticeable? When, if ever, does this coverage problem go away? What phenomenon makes it go away? 
+
+```{r}
+simulation <- function(
+  x, 
+  beta0 = 3, 
+  beta1 = 2, 
+  n_reps = 5000, 
+  alpha1 = 0.10, 
+  alpha2 = 0.05) {
+  for (error_dist in c("normal", "chisq", "correlated")) {
+    print(paste("Results for", error_dist, "errors:"))
+    results <- slope_simulation(x, beta0, beta1, error_dist, n_reps, alpha1, alpha2)
+    print(paste0("Bias:     ", results$bias[2], " (", results$bias[1], ", ", results$bias[3], ")"))
+    print(paste0("Coverage: ", results$coverage[2], " (", results$coverage[1], ", ", results$coverage[3], ")"))
+  }
+}
+
+simulation(x = seq(-2, 2, length = 5))
+```
+
+

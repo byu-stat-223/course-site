@@ -6,11 +6,62 @@ output: html_document
 <!--
 Possible R Moments:
 - Reticulate
-- blogdown
 - plumber
 - opencpu
 
+
+
+#### 2018-10-04
++ [Homework 4](hw4.html) Questions
+
+#### 2018-10-02
+
+#### 2018-09-27
+
+**
+
+\-
+
++ Announcements
+  + First exam takes place next Tuesday (2018-10-02) starting at 8am
+    + Exam administered and submitted through GitHub
+    + Commit and push early, and often
+    + Open notes, open internet - not open neighbor
+    + 48 hours to complete
+    + Plan on ~2 hours
+    + No class next Tuesday (2018-10-02)
++ R Moment: [TensorFlow](https://tensorflow.rstudio.com)
++ [Homework 3](hw3.html) Questions
++ Simulation studies for hypothesis testing:
+  + [Z-test on proportions](l07_ztest.nb.html)
+  + [M&M Experiment](l07_mm.nb.html)
+  + [McNemar's test](l07_mcnemar.nb.html)
++ [Homework 4](hw4.html) Assigned (Due 2018-10-04 at 8pm)
+
 -->
+
+#### 2018-09-25
+
+*Thus we may see that the Lord is merciful unto all who will, in the sincerity of
+their hearts, call upon his holy name.
+Yea, thus we see that the gate of heaven is open unto all, even to those who will 
+believe on the name of Jesus Christ, who is the Son of God.*
+
+\- [Helaman 3:27-28](https://www.lds.org/languages/eng/content/scriptures/bofm/hel/3)
+
++ Announcements:
+  + Tom office hours update
+  + First exam takes place next Tuesday (2018-10-02) starting at 8am
+    + Exam administered and submitted through GitHub
+    + Commit and push early, and often
+    + Open notes, open internet - not open neighbor
+    + 48 hours to complete
+    + Plan on ~2 hours
+    + No class next Tuesday (2018-10-02)
++ R Moment: [blogdown](https://bookdown.org/yihui/blogdown/)  
++ [Homework 3](hw3.html) Questions
++ [Hypothesis Testing for Population Mean](l05_mean.nb.html)
++ [Simulation study for simple linear regression](l06_regression.nb.html)
 
 #### 2018-09-20
 

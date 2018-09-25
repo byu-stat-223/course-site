@@ -104,7 +104,6 @@ simulate <- function(n, mu, sd, n_reps = 1000) {
 
 ```{r}
 test_stat_under_h0 <- simulate(length(x), 0, 1)
-test_stat_under_h0
 ```
 
 ```{r}
@@ -117,6 +116,7 @@ theory.
 
 ```{r}
 p_val <- mean(test_stat_under_h0 >= z)
+p_val
 ```
 
 ```{r}
@@ -127,7 +127,9 @@ ci <- function(x) {
     p_value = p,
     upper = p + ci)
 }
+```
 
+```{r}
 ci(test_stat_under_h0 >= z)
 ```
 
