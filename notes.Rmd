@@ -26,6 +26,8 @@ guiding, directing, comforting, and constant influence of the Holy Ghost.*
 \- Russel M. Nelson ([GC April 2018](https://www.lds.org/general-conference/2018/04/revelation-for-the-church-revelation-for-our-lives?lang=eng))
 
 + Announcements
+  + Homework Feedback
+    + Git Pull old repositories to see specific feedback (`feedback.txt`)
   + First exam takes place next Tuesday (2018-10-02) starting at 8am
     + Exam administered and submitted through GitHub
     + Commit and push early, and often
@@ -34,6 +36,13 @@ guiding, directing, comforting, and constant influence of the Holy Ghost.*
     + Plan on ~2 hours
     + 2 multi-part simulation studies
     + No class next Tuesday (2018-10-02)
+  + Reminders:
+    + Ensure that you double check your HW in a clean environment before submitting
+    + If you're using RStudio Projects (as recommended) there is no need for `setwd()`
+    + Make sure you know when to use the mean confidence interval formula and when 
+    to use the proportion confidence interval formula.
+    + If you find yourself copying and pasting code, think about whether or not
+    you can create a function for what you're trying to do.
 + R Moment: [TensorFlow](https://tensorflow.rstudio.com)
 + [Homework 3](hw3.html) Questions
 + Finish [simulation study for linear regression](l06_regression.nb.html)
