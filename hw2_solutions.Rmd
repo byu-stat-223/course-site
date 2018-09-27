@@ -8,5 +8,5 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-+ [All Four](hw1_all_four_sol.R)
++ [All Four](hw2_all_four_sol.R)
 + [Birthday](hw2_birthday_sol.R)
