@@ -1,0 +1,134 @@
+---
+title: "M&M Study"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+My daughter is convinced she can tell the difference between M&M colors by their
+flavor. I'm not buying it. Since I'm a statistician, we devise the following
+two experiments in an attempt to investigate her claim.
+
+### Experiment 1
+There are 6 M&M colors. In this experiment, I select one M&M of each color and 
+give it to my daughter while she is blindfolded. She guesses the color of each
+M&M as she tastes it. We agree that after she guesses a color, she will not guess
+it again in that round. We perform this exercise for three rounds, so a total of 
+18 M&Ms are consumed. At the end, we count the number of colors she correctly 
+determined out of 18.
+
+### Experiment 2
+In this version, I randomly draw 18 M&Ms from the bag, without regard to color, 
+and once again provide them to my blindfolded daughter. She makes her best guess
+at the color of each M&M and at the conclusion we count the number of correctly
+determined M&Ms out of 18.
+
+Given these experiments, we want to answer the following questions:
+
+1. When using $\alpha = 0.5$ level of significance, what is the critical value 
+for testing the null hypothesis that she is merely guessing (equal likelihood of
+selecting any given color)? What is the size of the test?
+
+2. Suppose my daughter can correctly distinguish blue M&Ms from the others, but
+if the M&M is not blue, she's merely guessing. What is the statistical power of 
+the testing procedure for this situation? Given the answer, which experiment
+would be preferred by a statistician (assuming both are equally convenient)?
+
+3. Suppose my daughter correctly identified 7 M&Ms. Is this sufficient evidence 
+against the null hypothesis that she is merely guessing?
+
+```{r}
+exp_1 <- function(h0 = TRUE) {
+  max <- ifelse(h0, 6, 5)
+  truth <- sample(1:max)
+  guess <- sample(1:max)
+  # How many were correctly guessed?
+  sum(guess == truth) + !h0
+}
+```
+
+```{r}
+sim_1 <- function(h0 = TRUE, n_rounds = 3, n_reps = 10000) {
+  replicate(n_reps, sum(replicate(n_rounds, exp_1(h0))))
+}
+```
+
+```{r}
+sim_2 <- function(h0 = TRUE, n_samples = 18, n_reps = 10000) {
+  if (h0) {
+    rbinom(n_reps, n_samples, p = 1/6)
+  } else {
+    blues <- rbinom(n_reps, n_samples, p = 1/6)
+    others <- rbinom(n_reps, n_samples - blues, p = 1/5)
+    blues + others
+  }
+}
+```
+
+```{r}
+h0_dist_1 <- sim_1()
+ha_dist_1 <- sim_1(FALSE)
+```
+
+```{r}
+h0_dist_2 <- sim_2()
+ha_dist_2 <- sim_2(FALSE)
+```
+
+Now that we have these distributions, we can answer the questions.
+
+```{r}
+alpha <- 0.05
+# Critical value
+crit_val_1 <- quantile(h0_dist_1, probs = 1 - alpha, type = 1) + 1
+# Size (probability of Type I error (false rejection of null hypothesis))
+mean(h0_dist_1 >= crit_val_1)
+```
+
+```{r}
+# Critical value
+crit_val_2 <- quantile(h0_dist_2, probs = 1 - alpha, type = 1) + 1
+# Size (probability of Type I error (false rejection of null hypothesis))
+mean(h0_dist_2 >= crit_val_2)
+```
+
+Statistical power is "the probability the test correctly rejects $H_0$ for a given
+$H_A$.
+
+```{r}
+prop_ci <- function(x) {
+  est <- mean(x)
+  ci <- qnorm(0.975) * sqrt(est * (1 - est) / length(x))
+  c(
+    lower = est - ci,
+    estimate = est,
+    upper = est + ci
+  )
+}
+```
+
+
+```{r}
+power_1 <- prop_ci(ha_dist_1 >= crit_val_1)
+power_1
+```
+
+```{r}
+power_2 <- prop_ci(ha_dist_2 >= crit_val_2)
+power_2
+```
+
+```{r}
+# Number of M&Ms correctly identified
+observed_stat <- 7
+
+p_val_1 <- prop_ci(h0_dist_1 >= observed_stat)
+p_val_1
+```
+
+```{r}
+p_val_2 <- prop_ci(h0_dist_2 >= observed_stat)
+p_val_2
+```

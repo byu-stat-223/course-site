@@ -1,0 +1,87 @@
+---
+title: "Z Test on Proportions"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE, include = FALSE)
+```
+
+Consider a two-sided z-test on a proportion $p$ based on $x$ successed in $n$
+trials. The null hypothesis is that $p = p_0$ and the alternative hypothesis
+is that $p != p_0$. The test says to reject the null hypothesis whenever the test
+statistic $z = (\hat{p} - p_0) / \sqrt{(p_0 * (1 - p_0) / n)}$ is greater than
+or equal to 1.96 in absolute value ($\hat{p} = x/n$). This test is reported to
+have an $\alpha = 0.05$ level of significance, but the actual probability of a 
+Type I error (rejecting the null hypothesis when in fact it is true) may be 
+different from $\alpha$ because:
+
+1. The test statistic is only approximately normally distributed
+2. The actual distribution of the test statistic is discrete
+
+Compute the actual probability of a Type I error fo rthe procedure described for
+all combinations of $p = [0.1, 0.3, 0.5]$ and $n = [20, 30, ..., 100]$. Present
+the results in a 9 x 3 matrix, with the sample $n$ going down the rows and the 
+values of $p$ across the columns.
+
+Assess the Monte Carlo error with a 95% confidence interval for each combination
+of $p$ and $n$. For which combinations does the lower bound on the confidence
+interval exceed $\alpha = 0.05$?
+
+
+```{r}
+simulate <- function(n, p, alpha = 0.05, n_reps = 1000) {
+  x <- rbinom(n_reps, n, p)
+  p_hat <- x / n
+  z <- (p_hat - p) / sqrt(p * (1 - p)/n)
+  # What proportion of times did we commit a Type I error at the given alpha level
+  mean(abs(z) >= qnorm(1 - alpha/2))
+}
+```
+
+```{r}
+simulate(30, .3)
+```
+
+```{r}
+p_seq <- c(0.1, 0.3, 0.5)
+n_seq <- seq(20, 100, by = 10)
+
+est <- matrix(NA, nrow = length(n_seq), ncol = length(p_seq))
+dimnames(est) <- list(sprintf("n=%d", n_seq),
+                      sprintf("p=%.1f", p_seq))
+est
+```
+
+```{r}
+n_reps <- 100000
+# Iterate over rows
+for (i in 1:length(n_seq)) {
+  # Iterate over columns
+  for (j in 1:length(p_seq)) {
+    est[i,j] <- simulate(n_seq[i], p_seq[j], n_reps = n_reps)
+  }
+}
+
+est
+```
+
+
+```{r tidy}
+library(tidyverse)
+results <- expand.grid(p = p_seq, n = n_seq) %>% 
+  mutate(value = map2_dbl(n, p, simulate, n_reps = n_reps)) %>% 
+  spread(key = p, value = value)
+
+results
+```
+
+```{r ci}
+ci <- qnorm(0.975) * sqrt(est * (1 - est)/n_reps)
+lower <- est - ci
+
+alpha <- 0.05
+lower > alpha
+```
+
+
