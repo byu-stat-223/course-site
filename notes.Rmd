@@ -12,15 +12,18 @@ Possible R Moments:
 
 
 #### 2018-10-04
-+ [Homework 4](hw4.html) Questions
++ [Homework 4](hw4.html) Walkthrough
 
 #### 2018-10-02
++ [Midterm Exam](midterm.html)
+--->
 
 #### 2018-09-27
 
-**
+*in coming days, it will not be possible to survive spiritually without the 
+guiding, directing, comforting, and constant influence of the Holy Ghost.*
 
-\-
+\- Russel M. Nelson ([GC April 2018](https://www.lds.org/general-conference/2018/04/revelation-for-the-church-revelation-for-our-lives?lang=eng))
 
 + Announcements
   + First exam takes place next Tuesday (2018-10-02) starting at 8am
@@ -29,16 +32,16 @@ Possible R Moments:
     + Open notes, open internet - not open neighbor
     + 48 hours to complete
     + Plan on ~2 hours
+    + 2 multi-part simulation studies
     + No class next Tuesday (2018-10-02)
 + R Moment: [TensorFlow](https://tensorflow.rstudio.com)
 + [Homework 3](hw3.html) Questions
++ Finish [simulation study for linear regression](l06_regression.nb.html)
 + Simulation studies for hypothesis testing:
-  + [Z-test on proportions](l07_ztest.nb.html)
+  + [Z-test on proportions](l07_ztest_prop.nb.html)
   + [M&M Experiment](l07_mm.nb.html)
-  + [McNemar's test](l07_mcnemar.nb.html)
 + [Homework 4](hw4.html) Assigned (Due 2018-10-04 at 8pm)
 
--->
 
 #### 2018-09-25
 
