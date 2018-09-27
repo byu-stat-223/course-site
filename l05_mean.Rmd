@@ -10,22 +10,21 @@ knitr::opts_chunk$set(cache = TRUE)
 Consider the following data:
 
 ```{r}
-x <-
-  c(2.11,
-    0.87,
-    0.95,
-    1.51,
-    0.28,
-    1.45,
-    0.18,
-    0.52,
-    -1.16,
-    -0.56,
-    0.13,
-    0.65,
-    -0.01,
-    0.95,
-    -1.95)
+x <- c(2.11,
+       0.87,
+       0.95,
+       1.51,
+       0.28,
+       1.45,
+       0.18,
+       0.52,
+       -1.16,
+       -0.56,
+       0.13,
+       0.65,
+       -0.01,
+       0.95,
+       -1.95)
 ```
 
 Given this data, we have the following assumptions:
@@ -108,6 +107,7 @@ test_stat_under_h0 <- simulate(length(x), 0, 1)
 
 ```{r}
 hist(test_stat_under_h0)
+abline(v = z, col = "red", lwd = 2)
 ```
 
 Now that we have a distribution of test statistics, we can once again perform
@@ -122,7 +122,7 @@ p_val
 ```{r}
 ci <- function(x) {
   p <- mean(x)
-  ci <- p * qnorm(0.975) * sqrt(p * (1 - p) / length(x))
+  ci <- qnorm(0.975) * sqrt(p * (1 - p) / length(x))
   c(lower = p - ci,
     p_value = p,
     upper = p + ci)
