@@ -12,8 +12,8 @@ R.
 enable different aspects of the Data Science process.
 
 
-### [Introductiton to R](https://colinfay.me/intro-to-r/)
-+ Generallly approachable introduction to the R language.
+### [Introduction to R](https://colinfay.me/intro-to-r/)
++ Generally approachable introduction to the R language.
 
 ### [Efficient R Programming](https://csgillespie.github.io/efficientR/)
 * Great resource for becoming more familiar with R and using it more effectively.
