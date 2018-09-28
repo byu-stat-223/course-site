@@ -1,0 +1,12 @@
+---
+title: "Homework 3 Solutions"
+date: "Due 2018-09-27 at 8pm"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
++ [Tack](hw3_tack_sol.R)
++ [Deal](hw3_deal_sol.R)
