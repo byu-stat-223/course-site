@@ -7,7 +7,7 @@ output: html_notebook
 knitr::opts_chunk$set(cache = TRUE)
 ```
 
-Consider a two-sided z-test on a proportion $p$ based on $x$ successed in $n$
+Consider a two-sided z-test on a proportion $p$ based on $x$ successes in $n$
 trials. The null hypothesis is that $p = p_0$ and the alternative hypothesis
 is that $p != p_0$. The test says to reject the null hypothesis whenever the test
 statistic $z = (\hat{p} - p_0) / \sqrt{(p_0 * (1 - p_0) / n)}$ is greater than
@@ -19,7 +19,7 @@ different from $\alpha$ because:
 1. The test statistic is only approximately normally distributed
 2. The actual distribution of the test statistic is discrete
 
-Compute the actual probability of a Type I error fo rthe procedure described for
+Compute the actual probability of a Type I error for the procedure described for
 all combinations of $p = [0.1, 0.3, 0.5]$ and $n = [20, 30, ..., 100]$. Present
 the results in a 9 x 3 matrix, with the sample $n$ going down the rows and the 
 values of $p$ across the columns.
