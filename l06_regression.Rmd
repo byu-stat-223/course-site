@@ -55,6 +55,32 @@ The following function conducts such a simulation study. The arguments to the fu
 + `alpha2`: Equals 1.0 minus the confidence coefficient for the confidence intervals of the bias and coverage probabilities. For example, for a 90% confidence interval on the bias, alpha2 = 0.10.
 
 ```{r}
+x <- seq(-2, 2, length = 50)
+intercept <- 42
+slope <- 3/8
+true_y <- intercept + slope * x
+error <- rnorm(length(x), sd = .1)
+simulated_y <- true_y + error
+```
+
+
+```{r}
+plot(x, true_y, type = 'l')
+points(x, simulated_y)
+```
+
+```{r}
+lm_out <- lm(simulated_y ~ x)
+```
+
+```{r}
+plot(x, true_y, type = 'l')
+points(x, simulated_y)
+abline(lm_out, col = "red")
+```
+
+
+```{r}
 slope_simulation <- function(
   regressor,
   intercept,
@@ -64,7 +90,7 @@ slope_simulation <- function(
   alpha1,
   alpha2
 ) {
-  n <- length(regressor) # Number of observatiosn
+  n <- length(regressor) # Number of observations
   z <- (regressor - mean(regressor)) / sd(regressor) # Used for correlated errors
   count_in <- 0
   difference <- numeric(n_reps)
@@ -90,7 +116,7 @@ slope_simulation <- function(
     
     # Confidence interval on fit_slope
     slope_conf <- fit_slope + c(-1, 1) * qt(1 - alpha1/2, fm$df.residual) * summary(fm)$coefficients[2, "Std. Error"]
-    count_in = count_in + (slope_conf[1] < slope && slope < slope_conf[2])
+    count_in <- count_in + (slope_conf[1] < slope && slope < slope_conf[2])
   }
   
   # Calculate coverage
@@ -148,19 +174,23 @@ Consider the following questions:
 ```{r}
 simulation <- function(
   x, 
-  beta0 = 3, 
-  beta1 = 2, 
+  intercept = 3, 
+  slope = 2, 
   n_reps = 5000, 
   alpha1 = 0.10, 
   alpha2 = 0.05) {
   for (error_dist in c("normal", "chisq", "correlated")) {
     print(paste("Results for", error_dist, "errors:"))
-    results <- slope_simulation(x, beta0, beta1, error_dist, n_reps, alpha1, alpha2)
+    results <- slope_simulation(x, intercept, slope, error_dist, n_reps, alpha1, alpha2)
     print(paste0("Bias:     ", results$bias[2], " (", results$bias[1], ", ", results$bias[3], ")"))
     print(paste0("Coverage: ", results$coverage[2], " (", results$coverage[1], ", ", results$coverage[3], ")"))
   }
 }
 
+simulation(x = seq(-2, 2, length = 50))
+```
+
+```{r}
 simulation(x = seq(-2, 2, length = 5))
 ```
 
