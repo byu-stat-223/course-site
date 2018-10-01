@@ -37,7 +37,7 @@ or James during office hours if you need help.
 # Homework
 
 Homework will be distributed on the course webpage and is due as indicated in
-the assignment.  **Your homeowrk must be submitted via GitHub**. This involves
+the assignment.  **Your homework must be submitted via GitHub**. This involves
 committing local changes and pushing to your repository on GitHub. Homework is 
 not submitted if you do not successfully push to your GitHub repository when due.
 Late homework is only accepted at the discretion of James and, if accepted, is
