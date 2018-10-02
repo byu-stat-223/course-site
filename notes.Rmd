@@ -14,9 +14,17 @@ Possible R Moments:
 #### 2018-10-04
 + [Homework 4](hw4.html) Walkthrough
 
-#### 2018-10-02
-+ [Midterm Exam](midterm.html)
 --->
+
+#### 2018-10-02
+
+*Therefore, dearly beloved brethren, let us cheerfully do all things that lie in
+our power; and then may we stand still, with the utmost assurance, to see the 
+salvation of God, and for his arm to be revealed.*
+
+\- [Doctrine and Covenants 123:17](https://www.lds.org/scriptures/dc-testament/dc/123.17)
+
++ [Midterm Exam](exam1.html) (Due 2018-10-04 at 8am)
 
 #### 2018-09-27
 

@@ -1,0 +1,109 @@
+---
+title: "Exam 1"
+date: "Due 2018-10-04 at 8am"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
++ Follow [this link](https://classroom.github.com/a/MIxuMKHo) to create your 
+repository for Exam 1.
+
++ Once your repository is created, create a new RStudio project based on that
+repository.
+
++ There are two questions for this exam, each with multiple parts. Please look
+through each question to make sure you understand what is being asked. If you need
+further clarification, please reach out to James or one of the TAs.
+
++ Before you start, please do the following to ensure that everything is working
+properly with git and GitHub:
+    + Create two files in your repository called `drips.R` and `march.R`
+    + Add a single comment to the top of each file (ie `# This is exam 1` or 
+    something like that)
+    + Save your files and commit the changes to git using RStudio
+    + Push your committed changes to GitHub
+    + **Verify that your files have been successfully pushed to GitHub.** You
+    can do this by visiting your GitHub repository in a web browser and making
+    sure you see the two files you just created, committed, and pushed.
+    + If you have any issues with the steps above, please reach out to James
+    
++ Make sure that you follow proper [coding standards](coding-standards.html).
+Pay particularly close attention to code formatting (it should look nice) and don't
+duplicate code - look to create functions whenever you can.
+    
+## Drips (60 points)
+
+You notice that the sink in your bathroom has an annoying drip. The number of drips
+every minute is random. Specifically, suppose that the number of drips in a minute
+is initially a Poisson random variable with a rate parameter `rate`. (You don't 
+need to know anything about the Poisson distribution except that you can sample 
+a random value from the Poisson distribution with parameter `rate` in R with the
+code: `rpois(1, rate)`.) Unfortunately, the severity of the leak is increasing.  
+Specifically, with each passing minute, the rate parameter increases by x%, where 
+x is a random value from the uniform distribution on the interval 0 to 5.  (Note 
+that the value of x changes every minute!)  You can sample a random value from 
+this uniform distribution using `runif(1,0,5)`.
+
+Write a function called `drip` that takes 2 parameters: `rate` and `minutes`. 
+`rate` is the initial poisson rate parameter of the drips. `minutes` is the number
+of minutes the sink is dripping. This function should return the total number of
+drips in the provided `minutes`. (15 points)
+
+Using the `drips` function you just defined, perform a simulation with 10,000 
+repetitions with an initial `rate` of 1 for 120 `minutes` (2 hours). Assign the 
+results of your simulation into a vector called `drip_counts`. At the end of this
+step, the `drip_counts` vector should contain 10,000 values, each representing 
+the total number of drips after 2 hours with an initial `rate` parameter of 1. 
+(10 points)
+
+Using the `drip_counts` vector, calculate the probability that the total number 
+of drips exceeds 700 after 2 hours. *Make sure you assess and report your Monte 
+Carlo (simulation) error (build a confidence interval).* (20 points)
+
+Suppose you are interested in testing the null hypothesis that the initial rate
+parameter is 1 versus the alternative hypothesis that the initial rate is larger
+than 1.  You observe 876 drips in 2 hours.  What is the associated p-value? *Again
+make sure that you assess and report your Monte Carlo (simulation) error.* (10 
+points)
+
+Using a 0.05 level of significance, what conclusion do you make regarding the
+null hypothesis? (5 points)
+
+## March Madness (45 points)
+The NCAA tournament (fondly referred to as March Madness) is a collegiate basketball
+tournament that takes place every spring. The tournament is made up of 64 teams 
+who play a single-elimination tournament to determine the national champion. The
+tournament is divided into 4 regions of 16 teams, and teams are ranked 1 - 16 in
+each region.
+
+In the first round of the tournament, each number 1 ranked team plays the number
+16 ranked team in their region (So there are 4 games played between 1 and 16 seeded 
+teams). This year, For the first time ever, a 16 ranked team actually beat
+a number 1 ranked team. The victory brings the historical win-loss record for 16 
+seeds vs. 1 seeds to 1-135. Even though this had never previously occurred, odds 
+makers had calculated the likelihood of this event to be 1:54.
+
+Write a function called `tournament` that takes 1 parameter: `odds`. `odds` represents
+the likelihood of a 16 seed beating a 1 seed. This function should return the number
+of years (tournaments) that it takes before a 16 seed beats a 1 seed. (15 points)
+
+Using the `tournament` function defined above, perform a simulation with 10,000 
+repetitions with the historical odds ratio (1/136). Assign the results of your 
+simulation into a vector called `historical_odds`. At the end of this step, the
+`historical_odds` vector should contain 10,000 values, each representing the number
+of years until a 16 seed beats a 1 seed given the historical odds ratio. (10 points)
+
+Using the `tournament` function defined above, perform a simulation with 10,000 
+repetitions with the calculated odds ratio (1/54). Assign the results of your 
+simulation into a vector called `calculated_odds`. At the end of this step, the
+`calculated_odds` vector should contain 10,000 values, each representing the number
+of years until a 16 seed beats a 1 seed given the calculated odds ratio. (10 points)
+
+Calculate the estimate for the number of years until a 16 seed beats a 1 seed for
+both the `historical_odds` and `calculated_odds` vectors. *Make sure that you 
+assess and report your Monte Carlo (simulation) error for each estimate*. (10 points)
+
+#### **Make sure you commit your changes to git and push to GitHub**
