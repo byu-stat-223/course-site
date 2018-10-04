@@ -1,0 +1,86 @@
+---
+title: "Homework 5"
+date: "Due 2018-10-11 at 8am"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
++ Follow [this link](https://classroom.github.com/a/vbOtC-cU) to create your 
+repository for homework 5.
+
++ Once your repository is created, create a new RStudio project based on that
+repository.
+
+## Mice
+
+The purpose of this problem is to build intuition for the bootstrap procedure.
+With that in mind, consider the very small data set of the weights of three mice
+that came from the same litter. The weights are 82, 107 and 93 grams. Please
+write your responses in comments and your code in an R script named `mice.R` or `mice.Rmd`.
+
+```{r, eval = FALSE}
+weights <- c(82, 107, 93)
+```
+
++ What is the mean weight of the three mice?
++ How many possible bootstrap samples are there from this sample of three mice?
++ List all possible bootstrap samples and compute the mean of each.
++ Compute the mean of the bootstrap means. How does this compare with the mean from part (a)
++ Calculate a percentile-based bootstrap confidence interval with level of confidence at least 95%. What information does this interval provide? How confident are you in reporting this interval? Explain.
+ 
+## Trees
+ 
+In the trees dataset found in R, there are three variables "Girth" "Height"
+and "Volume". There is interest in using "Girth" and "Height" (two noninvasive
+measures) to predict "Volume". Carrying out this prediction can be done using a
+regression model with two explanatory variables ("Height" and "Girth"). This
+model can very easily be fit in R using the following two lines of code.
+
+```{r, eval = FALSE}
+data(trees)
+lm(Volume ~ Height + Girth, data=trees)
+```
+
+Principal interest lies in estimating the regression coefficient of "Height"
+divided by the regression coefficient for "Girth". Obtaining a estimate of
+the ratio is easy --- just compute the ratio of the two slope estimates ---
+but assessing uncertainty associated with the point estimate can be
+difficult theoretically (although methods do exist). 
+
++ For this problem construct an 95% confidence interval using the bootstrap 
+procedure. Use 5,000 bootstrap samples. Compute your estimate and confidence 
+bounds in an R script named `trees.R` or `trees.Rmd`.
+
+## Showers
+
+You think that your roommate takes showers whose duration is different from
+yours. Your roommate disagrees but, instead of arguing, you both decide to keep
+track of the time it takes both of you to shower for fourteen days and then to
+employ skills from an introductory statistics class (e.g., STAT 121) to create a
+confidence interval on the population mean showering time of your roommate minus
+the population mean showering time of you. The data and code to compute a 90%
+confidence interval are below.
+
+```{r, eval = FALSE}
+roommate <- c(6,6.25,5.75,6.5,6,15,35,20,4,5.25,5.75)
+
+you <- c(3.5,5.5,4,4,4,6,11,12,3,4,4.25,7,3.25)
+
+t.test(roommate,you,conf.level=0.9)
+```
+
+Notice that the confidence interval contains 0 and, therefore, your roommate
+concludes that there is no significant difference in the time it takes you
+both to take a shower. But it might be inappropriate to use this confidence
+interval on the difference in means because the data are not normally
+distributed and the sample sizes are small. 
+
++ Use the bootstrap procedure to compute a 90% confidence interval on the difference in these means. Based on
+this bootstrap confidence interval, what conclusion do you make at the 0.10
+level of significance? Please write your responses in comments and your code
+in an R script named 'shower.R'.
+
+#### **Make sure you commit your changes to git and push to GitHub**

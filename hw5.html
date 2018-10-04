@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Homework 5</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Stat 223</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li>
+  <a href="notes.html">Notes</a>
+</li>
+<li>
+  <a href="assignments.html">Assignments</a>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Homework 5</h1>
+<h4 class="date"><em>Due 2018-10-11 at 8am</em></h4>
+
+</div>
+
+
+<ul>
+<li><p>Follow <a href="">this link</a> to create your repository for homework 5.</p></li>
+<li><p>Once your repository is created, create a new RStudio project based on that repository.</p></li>
+</ul>
+<div id="mice" class="section level2">
+<h2>Mice</h2>
+<p>The purpose of this problem is to build intuition for the bootstrap procedure. With that in mind, consider the very small data set of the weights of three mice that came from the same litter. The weights are 82, 107 and 93 grams. Please write your responses in comments and your code in an R script named <code>mice.R</code> or <code>mice.Rmd</code>.</p>
+<ul>
+<li>What is the mean weight of the three mice?</li>
+<li>How many possible bootstrap samples are there from this sample of three mice?</li>
+<li>List all possible bootstrap samples and compute the mean of each.</li>
+<li>Compute the mean of the bootstrap means. How does this compare with the mean from part (a)</li>
+<li>Calculate a percentile-based bootstrap confidence interval with level of confidence at least 95%. What information does this interval provide? How confident are you in reporting this interval? Explain.</li>
+</ul>
+</div>
+<div id="trees" class="section level2">
+<h2>Trees</h2>
+<p>In the trees dataset found in R, there are three variables “Girth” “Height” and “Volume”. There is interest in using “Girth” and “Height” (two noninvasive measures) to predict “Volume”. Carrying out this prediction can be done using a regression model with two explanatory variables (“Height” and “Girth”). This model can very easily be fit in R using the following two lines of code.</p>
+<pre class="r"><code>data(trees)
+lm(Volume ~ Height + Girth, data=trees)</code></pre>
+<p>Principal interest lies in estimating the regression coefficient of “Height” divided by the regression coefficient for “Girth”. Obtaining a estimate of the ratio is easy — just compute the ratio of the two slope estimates — but assessing uncertainty associated with the point estimate can be difficult theoretically (although methods do exist).</p>
+<ul>
+<li>For this problem construct an 95% confidence interval using the bootstrap procedure. Use 5,000 bootstrap samples. Compute your estimate and confidence bounds in an R script named <code>trees.R</code> or <code>trees.Rmd</code>.</li>
+</ul>
+</div>
+<div id="showers" class="section level2">
+<h2>Showers</h2>
+<p>You think that your roommate takes showers whose duration is different from yours. Your roommate disagrees but, instead of arguing, you both decide to keep track of the time it takes both of you to shower for fourteen days and then to employ skills from an introductory statistics class (e.g., STAT 121) to create a confidence interval on the population mean showering time of your roommate minus the population mean showering time of you. The data and code to compute a 90% confidence interval are below.</p>
+<pre class="r"><code>roommate &lt;- c(6,6.25,5.75,6.5,6,15,35,20,4,5.25,5.75)
+
+you &lt;- c(3.5,5.5,4,4,4,6,11,12,3,4,4.25,7,3.25)
+
+t.test(roommate,you,conf.level=0.9)</code></pre>
+<p>Notice that the confidence interval contains 0 and, therefore, your roommate concludes that there is no significant difference in the time it takes you both to take a shower. But it might be inappropriate to use this confidence interval on the difference in means because the data are not normally distributed and the sample sizes are small.</p>
+<ul>
+<li>Use the bootstrap procedure to compute a 90% confidence interval on the difference in these means. Based on this bootstrap confidence interval, what conclusion do you make at the 0.10 level of significance? Please write your responses in comments and your code in an R script named ‘shower.R’.</li>
+</ul>
+<div id="make-sure-you-commit-your-changes-to-git-and-push-to-github" class="section level4">
+<h4><strong>Make sure you commit your changes to git and push to GitHub</strong></h4>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
