@@ -5,16 +5,35 @@ output: html_document
 
 <!--
 Possible R Moments:
-- Reticulate
 - plumber
 - opencpu
-
+---->
 
 
 #### 2018-10-04
-+ [Homework 4](hw4.html) Walkthrough
 
---->
+*Jesus provides the ultimate example of righteous responsiveness and willing submission as He suffered intense agony in Gethsemane.
+“And when he was at the place, he said unto [His disciples], Pray that ye enter not into temptation.
+“And he … kneeled down, and prayed,
+“Saying, Father, if thou be willing, remove this cup from me: nevertheless not my will, but thine, be done.”
+The Savior’s meekness in this eternally essential and excruciating experience demonstrates for each of us the importance of putting the wisdom of God above our own wisdom.*
+
+\- David A. Bednar ([GC April 2018](https://www.lds.org/general-conference/2018/04/meek-and-lowly-of-heart?lang=eng))
+
++ Announcements
+  + [General Conference](https://www.lds.org/liahona/2018/10/youth/5-ways-to-learn-from-general-conference?lang=eng&_r=1&cid=HP_FR-28-9-2018_dPTH_fLHNAxLIDyL2_) this weekend
+  + Homework feedback
+    + Git Pull
+  + Avoid "Ammend previous commit"
+  + [Big Mountain Data & Dev conference](https://www.utahgeekevents.com/events/big-mountain-data-dev/)
++ R Moment: [reticulate](https://rstudio.github.io/reticulate/)
++ [Homework 4](hw4_solutions.html) Walkthrough
++ Introduction to [Bootstrap](https://en.wikipedia.org/wiki/Bootstrapping_(statistics))
+  + [Bootstrap confidence interval on mean](l08_mean.nb.html)
+  + [Memory loss](l08_memory.nb.html)
+  + [Confidence interval](l08_ci.nb.html)
++ [Homework 5](hw5.html) Assigned (Due 2018-10-11 at 8pm)
+
 
 #### 2018-10-02
 
