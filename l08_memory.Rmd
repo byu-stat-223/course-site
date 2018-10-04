@@ -1,0 +1,81 @@
+---
+title: "Memory Loss and Marijuana Use"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+## Two sample t-test of difference of means 
+As part of a research project on the effects that marijuana smoking has on 
+short-term memory, two groups of ten subjects were tested. One group, the 
+"nonsmokers", claimed not to smoke marijuana. A second group, the "smokers," 
+claimed to smoke marijuana regularly. The following are the number items remembered 
+successfully on the digit span task.
+
+```{r}
+nonsmokers <- c(18, 22, 21, 17, 20, 17, 23, 20, 22, 21)
+smokers <- c(16, 20, 14, 21, 20, 18, 13, 15, 17, 21)
+n1 <- length(nonsmokers)
+n2 <- length(smokers)
+mean(nonsmokers)
+mean(smokers)
+```
+
+Two-sample t-test:  $H_0: \mu_1 = \mu_2$
+Assumptions:
+1. Independent observations from both populations
+2. Observations from both groups are drawn from normally distributed populations
+3. The two populations have the same variance (if not using Welch's test)
+
+```{r}
+tt <- t.test(nonsmokers, smokers, var.equal = TRUE)
+tt
+```
+
+Welch's t-test
+
+```{r}
+ttw <- t.test(nonsmokers, smokers, var.equal = FALSE)
+ttw
+```
+
+Assumptions from bootstrap procedure
+1. Independent observations from both populations
+
+```{r}
+observed_difference <- mean(nonsmokers) - mean(smokers)
+observed_difference
+```
+
+Note that what we're interested in here is the value of this `observed_difference`
+as a way of testing a difference in means. Now, we can use bootstrap sampling of
+both samples to build a distribution around the difference in means.
+
+```{r}
+n_samples <- 10000
+sample_differences <- replicate(n_samples, mean(sample(nonsmokers, replace = TRUE)) - mean(sample(smokers, replace = TRUE)))
+```
+
+Let's investigate the distribution of `sample_differences`.
+
+```{r}
+plot(density(sample_differences))
+```
+
+Using this distribution, we can build a confidence interval around the difference
+in sample means.
+
+```{r}
+ci <- quantile(sample_differences, probs = c(0.025, 0.975))
+ci
+```
+
+```{r}
+plot(density(sample_differences))
+abline(v = ci, col = "red")
+```
+
+Using this method, we come to the same conclusion that we did using the t-test, 
+namely that we can reject the null hypothesis.

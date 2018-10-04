@@ -1,0 +1,70 @@
+---
+title: "Bootstrap Confidence Interval on a mean"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+Bootstrapping is a method that relies on random sampling with replacement. This
+method allows us to build measures of accuracy or perform inference in situations
+where other methods prove difficult.
+
+Let's illustrate this via a simple example. Suppose we have 15 observations drawn
+from a random normal distribution.
+
+```{r}
+set.seed(35487)
+n <- 15
+x <- rnorm(n)
+```
+
+We can plot the density of this sample to confirm that it's approximately normal.
+
+```{r}
+plot(density(x))
+```
+
+We can use a t-test to provide a confidence interval based on the normality assumption:
+
+```{r}
+t.test(x)
+```
+
+Now, we could also create a confidence interval by building a series of bootstrapped
+samples from our given sample of 15 observations. This involves sampling 15
+observations from our original sample **with replacement** and calculating the mean
+value of these bootstrapped samples. It's important to note that since we are
+sampling with replacement, there are $15^{15}$, or $`r 15^15`$ possible bootstrap
+samples. While we could *theoretically* include each of those samples, that would
+take an exceptional amount of time and compute power. Instead, we'll once again
+rely on the central limit theorem and assume that if we provide a large enough 
+collection of bootstrap samples, we will be ok.
+
+```{r}
+n_samples <- 10000
+bootstrap_means <- replicate(n_samples, mean(sample(x, replace = TRUE)))
+```
+
+Now that we have these 10,000 sample means constructed from our original sample,
+we can explore the density and then use our collection of means to provide an
+estimated confidence interval.
+
+```{r}
+plot(density(bootstrap_means))
+```
+
+```{r}
+ci <- quantile(bootstrap_means, probs = c(0.025, 0.975))
+ci
+```
+
+Finally, we can visualize this confidence interval along with the density we 
+previously plotted.
+
+```{r}
+plot(density(bootstrap_means))
+abline(v = ci, col = "red")
+```
+
