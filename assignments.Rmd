@@ -8,6 +8,6 @@ output: html_document
 #### [Homework 3](hw3.html) | *Due 2018-09-27 at 8pm* | [Solutions](hw3_solutions.html)
 #### [Midterm Exam](exam1.html) | *Due 2018-10-04 at 8am*
 #### [Homework 4](hw4.html) | *Due 2018-10-04 at 8pm* | [Solutions](hw4_solutions.html)
-#### Homework 5 | *Due 2018-10-11 at 8pm*
+#### [Homework 5](hw5.html) | *Due 2018-10-11 at 8pm*
 #### Homework 6 | *Due 2018-10-18 at 8pm*
 #### Final Exam | *Due 2018-10-23 at 8pm*
