@@ -256,7 +256,7 @@ lm(Volume ~ Height + Girth, data=trees)</code></pre>
 
 you &lt;- c(3.5,5.5,4,4,4,6,11,12,3,4,4.25,7,3.25)
 
-t.test(roommate,you,conf.level=0.9)</code></pre>
+t.test(roommate, you, conf.level = 0.9)</code></pre>
 <p>Notice that the confidence interval contains 0 and, therefore, your roommate concludes that there is no significant difference in the time it takes you both to take a shower. But it might be inappropriate to use this confidence interval on the difference in means because the data are not normally distributed and the sample sizes are small.</p>
 <ul>
 <li>Use the bootstrap procedure to compute a 90% confidence interval on the difference in these means. Based on this bootstrap confidence interval, what conclusion do you make at the 0.10 level of significance? Please write your responses in comments and your code in an R script named <code>shower.R</code> or <code>shower.Rmd</code>.</li>
