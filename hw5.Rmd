@@ -81,6 +81,6 @@ distributed and the sample sizes are small.
 + Use the bootstrap procedure to compute a 90% confidence interval on the difference in these means. Based on
 this bootstrap confidence interval, what conclusion do you make at the 0.10
 level of significance? Please write your responses in comments and your code
-in an R script named 'shower.R'.
+in an R script named `shower.R` or `shower.Rmd`.
 
 #### **Make sure you commit your changes to git and push to GitHub**
