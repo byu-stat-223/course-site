@@ -1,0 +1,46 @@
+---
+title: "Bootstrap Troubles"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+By now, we realize that the bootstrap is a powerful and flexible method. However,
+it does have downsides, specifically when estimating values in the extremes. For
+example, consider 1000 samples drawn from a uniform distribution between 0 and 2.
+
+```{r}
+theta <- 2
+x <- runif(1000, min = 0, max = theta)
+```
+
+Given these samples, we'd like to estimate `theta`.
+
+```{r}
+n_samples <- 10000
+bs_theta <- replicate(n_samples, max(sample(x, replace = TRUE)))
+```
+
+```{r}
+hist(bs_theta)
+```
+
+What do we notice about the distribution of our estimates of `theta`?
+
+```{r}
+max(x)
+```
+
+```{r}
+max(bs_theta)
+```
+
+Let's build a confidence interval around our estimate of `theta`.
+
+```{r}
+quantile(bs_theta, c(0.025, 0.975))
+```
+
+Oh no!! Our confidence interval *does not* include the true value. Why?
