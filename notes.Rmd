@@ -8,7 +8,26 @@ Possible R Moments:
 - plumber
 - opencpu
 ---->
+#### 2018-10-09
 
+*“All that we call human history -- money, poverty, ambition, war, prostitution, 
+classes, empires, slavery -- [is] the long terrible story of man trying to find 
+something other than God which will make him happy.”*
+
+\- C.S. Lewis ([Mere Christianity](https://www.goodreads.com/quotes/401009-all-that-we-call-human-history--money-poverty-ambition-war-prostitution))
+
++ Announcements
+  + [Big Mountain Data & Dev conference](https://www.utahgeekevents.com/events/big-mountain-data-dev/)
+    + I'm speaking Friday morning at 10:45
+  + I'm out of town next Tuesday (October 16) - you will have a guest lecture
++ R Moment: [plumber](https://www.rplumber.io/)
++ [Exam Walkthrough](exam1_solutions.html)
++ Bootstrap continued
+  + [Memory loss](l08_memory.nb.html)
+  + [Confidence interval](l08_ci.nb.html)
+  + [Bootstrap coverage](l09_bs_coverage.nb.html)
+  + [Bootstrap troubles](l09_bs_troubles.nb.html)
++ [Homework 5](hw5.html) questions
 
 #### 2018-10-04
 
@@ -30,8 +49,7 @@ The Savior’s meekness in this eternally essential and excruciating experience 
 + [Homework 4](hw4_solutions.html) Walkthrough
 + Introduction to [Bootstrap](https://en.wikipedia.org/wiki/Bootstrapping_(statistics))
   + [Bootstrap confidence interval on mean](l08_mean.nb.html)
-  + [Memory loss](l08_memory.nb.html)
-  + [Confidence interval](l08_ci.nb.html)
+  
 + [Homework 5](hw5.html) Assigned (Due 2018-10-11 at 8pm)
 
 
