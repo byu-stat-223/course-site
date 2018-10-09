@@ -1,0 +1,122 @@
+---
+title: "Bootstrap Coverage"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE, message = FALSE)
+```
+
+Using the idea of coverage that was introduced with simulation studies, we can 
+assess the coverage of bootstrapped confidence intervals.
+
+Consider a random sample from a standard normal distribution.
+
+```{r}
+n <- 50
+x <- rnorm(n)
+```
+
+Given this, we want to estimate the 25th quantile value.
+```{r}
+quantile(x, 0.25)
+```
+
+We can build a confidence interval around this estimate using the bootstrap method.
+```{r}
+bootstrap_ci <- function(x, f, alpha = 0.05, n_samples = 1000) {
+  bs_out <- replicate(n_samples, f(sample(x, replace = TRUE)))
+  quantile(bs_out, c(alpha/2, 1 - alpha/2))
+}
+```
+
+```{r}
+bootstrap_ci(x, function(x) quantile(x, 0.25))
+```
+
+We also can calculate the actual value of the 25th quantile of the standard normal
+distribution.
+```{r}
+truth <- qnorm(0.25)
+truth
+```
+
+Given that we know the actual value, we can use a simulation study to assess the
+coverage of our bootstrap confidence interval.
+
+```{r}
+library(tictoc)
+n_reps <- 1000
+```
+
+```{r}
+tictoc::tic()
+bs_ci_values <- replicate(n_reps, bootstrap_ci(rnorm(n), function(x) quantile(x, 0.25)))
+tictoc::toc()
+```
+
+```{r}
+dim(bs_ci_values)
+```
+
+Notice that the above code takes a *long* time to run. Why?
+
+We can speed things up by running our code in parallel! First, we need to install
+a couple of useful packages, `future.apply` and `furrr`. `future.apply` provides
+parallelized versions of the R `apply` functions while `furrr` provides parallelized
+versions of the `purrr` map functions.
+
+```{r, eval=FALSE}
+install.packages(c("future.apply", "furrr"))
+```
+
+```{r}
+library(future.apply)
+library(furrr)
+```
+
+Now, we need to setup our computer to take advantage of the cores we have available.
+
+```{r}
+availableCores()
+plan("multiprocess")
+```
+
+# Run the same code as above, but this time in parallel using `future_replicate()`.
+
+```{r}
+tic()
+bs_ci_values <- future_replicate(n_reps, bootstrap_ci(rnorm(n), function(x) quantile(x, 0.25)))
+toc()
+```
+
+```{r}
+dim(bs_ci_values)
+```
+
+
+```{r}
+tic()
+bs_ci_list <- future_map(1:n_reps, 
+                         function(x) bootstrap_ci(rnorm(n), function(x) quantile(x, 0.25)))
+toc()
+```
+
+```{r}
+length(bs_ci_list)
+```
+
+Now that we have these confidence interval values, we can estimate coverage by
+determining what proportion of intervals contain the true value.
+
+```{r}
+coverage <- mean(purrr::map_lgl(bs_ci_list, ~.[1] <= truth & .[2] >= truth))
+coverage
+```
+
+```{r}
+coverage_ci <- coverage + c(-1, 1)*qnorm(0.975)*sqrt(coverage*(1 - coverage)/n_reps)
+c(lower = coverage_ci[1],
+  coverage = coverage,
+  upper = coverage_ci[2])
+```
