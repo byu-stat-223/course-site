@@ -1,0 +1,12 @@
+---
+title: "Homework 4 Solutions"
+date: "Due 2018-10-04 at 8pm"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
++ [Drips](exam1_drips_sol.R)
++ [March Madness](exam1_march_sol.R)
