@@ -2099,7 +2099,7 @@ $(document).ready(function () {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-text-begin -->
-<p>One of the conveniences of the bootstrap method is that it allows us to create a confidence interval around arbitray metrics.</p>
+<p>One of the conveniences of the bootstrap method is that it allows us to create a confidence interval around arbitrary metrics.</p>
 <p>Consider the <code>faithful</code> dataset in R that contains information about Old Faithful eruptions in Yellowstone. The <code>waiting</code> column contains data on the time between eruptions.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -2128,8 +2128,20 @@ $(document).ready(function () {
 <li>Given this distribution of <code>n</code> 25th quantile values, build a confidence interval on the 25th quantile.</li>
 </ul>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyAtLS0tXG5gYGAifQ== -->
+<pre class="r"><code># ----</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Now, we can expand what we’ve done to create a generic solution that provides a bootstrap confidence interval for an arbitrary metric.</p>
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQm9vdHN0cmFwIENvbmZpZGVuY2UgSW50ZXJ2YWwiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlID0gRkFMU0V9CmtuaXRyOjpvcHRzX2NodW5rJHNldChjYWNoZSA9IFRSVUUpCmBgYAoKT25lIG9mIHRoZSBjb252ZW5pZW5jZXMgb2YgdGhlIGJvb3RzdHJhcCBtZXRob2QgaXMgdGhhdCBpdCBhbGxvd3MgdXMgdG8gY3JlYXRlIGEKY29uZmlkZW5jZSBpbnRlcnZhbCBhcm91bmQgYXJiaXRyYXkgbWV0cmljcy4KCkNvbnNpZGVyIHRoZSBgZmFpdGhmdWxgIGRhdGFzZXQgaW4gUiB0aGF0IGNvbnRhaW5zIGluZm9ybWF0aW9uIGFib3V0IE9sZCBGYWl0aGZ1bAplcnVwdGlvbnMgaW4gWWVsbG93c3RvbmUuIFRoZSBgd2FpdGluZ2AgY29sdW1uIGNvbnRhaW5zIGRhdGEgb24gdGhlIHRpbWUgYmV0d2VlbgplcnVwdGlvbnMuCgpgYGB7cn0KaGlzdChmYWl0aGZ1bCR3YWl0aW5nKQpgYGAKCldlIHdhbnQgdG8gZXN0aW1hdGUgdGhlIDI1dGggcXVhbnRpbGUgZm9yIHRoaXMgZGF0YS4gV2UgY2FuIGNhbGN1bGF0ZSB0aGF0IHdpdGgKdGhlIGZvbGxvd2luZzoKCmBgYHtyfQpxdWFudGlsZShmYWl0aGZ1bCR3YWl0aW5nLCAwLjI1KQpgYGAKCk5vdywgaG93IGRvIHdlIG1lYXN1cmUgb3VyIHVuY2VydGFpbnR5IGluIHRoaXMgbWVhc3VyZW1lbnQ/IElmIHdlIGRvbid0IGhhdmUgYSAKaGFuZHkgZm9ybXVsYSwgY2FuIHdlIHN0aWxsIG1lYXN1cmUgdW5jZXJ0YWludHk/IEJvb3RzdHJhcCB0byB0aGUgcmVzY3VlIQoKKyBDcmVhdGUgYG5gIGJvb3RzdHJhcCBzYW1wbGVzIG9mIGBmYWl0aGZ1bCR3YWl0aW5nYAorIEZvciBlYWNoIGJvb3RzdHJhcCBzYW1wbGUsIGNhbGN1bGF0ZSB0aGUgMjV0aCBxdWFudGlsZSB2YWx1ZQorIEdpdmVuIHRoaXMgZGlzdHJpYnV0aW9uIG9mIGBuYCAyNXRoIHF1YW50aWxlIHZhbHVlcywgYnVpbGQgYSBjb25maWRlbmNlIGludGVydmFsCm9uIHRoZSAyNXRoIHF1YW50aWxlLgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQm9vdHN0cmFwIENvbmZpZGVuY2UgSW50ZXJ2YWwiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlID0gRkFMU0V9CmtuaXRyOjpvcHRzX2NodW5rJHNldChjYWNoZSA9IFRSVUUpCmBgYAoKT25lIG9mIHRoZSBjb252ZW5pZW5jZXMgb2YgdGhlIGJvb3RzdHJhcCBtZXRob2QgaXMgdGhhdCBpdCBhbGxvd3MgdXMgdG8gY3JlYXRlIGEKY29uZmlkZW5jZSBpbnRlcnZhbCBhcm91bmQgYXJiaXRyYXJ5IG1ldHJpY3MuCgpDb25zaWRlciB0aGUgYGZhaXRoZnVsYCBkYXRhc2V0IGluIFIgdGhhdCBjb250YWlucyBpbmZvcm1hdGlvbiBhYm91dCBPbGQgRmFpdGhmdWwKZXJ1cHRpb25zIGluIFllbGxvd3N0b25lLiBUaGUgYHdhaXRpbmdgIGNvbHVtbiBjb250YWlucyBkYXRhIG9uIHRoZSB0aW1lIGJldHdlZW4KZXJ1cHRpb25zLgoKYGBge3J9Cmhpc3QoZmFpdGhmdWwkd2FpdGluZykKYGBgCgpXZSB3YW50IHRvIGVzdGltYXRlIHRoZSAyNXRoIHF1YW50aWxlIGZvciB0aGlzIGRhdGEuIFdlIGNhbiBjYWxjdWxhdGUgdGhhdCB3aXRoCnRoZSBmb2xsb3dpbmc6CgpgYGB7cn0KcXVhbnRpbGUoZmFpdGhmdWwkd2FpdGluZywgMC4yNSkKYGBgCgpOb3csIGhvdyBkbyB3ZSBtZWFzdXJlIG91ciB1bmNlcnRhaW50eSBpbiB0aGlzIG1lYXN1cmVtZW50PyBJZiB3ZSBkb24ndCBoYXZlIGEgCmhhbmR5IGZvcm11bGEsIGNhbiB3ZSBzdGlsbCBtZWFzdXJlIHVuY2VydGFpbnR5PyBCb290c3RyYXAgdG8gdGhlIHJlc2N1ZSEKCisgQ3JlYXRlIGBuYCBib290c3RyYXAgc2FtcGxlcyBvZiBgZmFpdGhmdWwkd2FpdGluZ2AKKyBGb3IgZWFjaCBib290c3RyYXAgc2FtcGxlLCBjYWxjdWxhdGUgdGhlIDI1dGggcXVhbnRpbGUgdmFsdWUKKyBHaXZlbiB0aGlzIGRpc3RyaWJ1dGlvbiBvZiBgbmAgMjV0aCBxdWFudGlsZSB2YWx1ZXMsIGJ1aWxkIGEgY29uZmlkZW5jZSBpbnRlcnZhbApvbiB0aGUgMjV0aCBxdWFudGlsZS4KCmBgYHtyfQojIC0tLS0KYGBgCgpOb3csIHdlIGNhbiBleHBhbmQgd2hhdCB3ZSd2ZSBkb25lIHRvIGNyZWF0ZSBhIGdlbmVyaWMgc29sdXRpb24gdGhhdCBwcm92aWRlcyBhCmJvb3RzdHJhcCBjb25maWRlbmNlIGludGVydmFsIGZvciBhbiBhcmJpdHJhcnkgbWV0cmljLgoKYGBge3IsIGluY2x1ZGUgPSBGQUxTRX0KYm9vdHN0cmFwX2NpIDwtIGZ1bmN0aW9uKHgsIGYsIGFscGhhID0gMC4wNSwgbl9zYW1wbGVzID0gNTAwMCkgewogIGJzX291dCA8LSByZXBsaWNhdGUobl9zYW1wbGVzLCBmKHNhbXBsZSh4LCByZXBsYWNlID0gVFJVRSkpKQogIHF1YW50aWxlKGJzX291dCwgYyhhbHBoYS8yLCAxIC0gYWxwaGEvMikpCn0KYGBgCgpgYGB7ciwgaW5jbHVkZSA9IEZBTFNFfQpib290c3RyYXBfY2koZmFpdGhmdWwkd2FpdGluZywgZnVuY3Rpb24oeCkgcXVhbnRpbGUoeCwgLjI1KSkKYGBgCgoK</div>
 
 
 

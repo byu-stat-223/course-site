@@ -8,7 +8,7 @@ knitr::opts_chunk$set(cache = TRUE)
 ```
 
 One of the conveniences of the bootstrap method is that it allows us to create a
-confidence interval around arbitray metrics.
+confidence interval around arbitrary metrics.
 
 Consider the `faithful` dataset in R that contains information about Old Faithful
 eruptions in Yellowstone. The `waiting` column contains data on the time between
@@ -32,3 +32,23 @@ handy formula, can we still measure uncertainty? Bootstrap to the rescue!
 + For each bootstrap sample, calculate the 25th quantile value
 + Given this distribution of `n` 25th quantile values, build a confidence interval
 on the 25th quantile.
+
+```{r}
+# ----
+```
+
+Now, we can expand what we've done to create a generic solution that provides a
+bootstrap confidence interval for an arbitrary metric.
+
+```{r, include = FALSE}
+bootstrap_ci <- function(x, f, alpha = 0.05, n_samples = 5000) {
+  bs_out <- replicate(n_samples, f(sample(x, replace = TRUE)))
+  quantile(bs_out, c(alpha/2, 1 - alpha/2))
+}
+```
+
+```{r, include = FALSE}
+bootstrap_ci(faithful$waiting, function(x) quantile(x, .25))
+```
+
+
