@@ -34,21 +34,24 @@ handy formula, can we still measure uncertainty? Bootstrap to the rescue!
 on the 25th quantile.
 
 ```{r}
-# ----
+n_samples <- 10000
+quantile_samples <- replicate(n_samples, quantile(sample(faithful$waiting, replace = TRUE), .25))
+```
+
+```{r}
+quantile(quantile_samples, c(0.025, 0.975))
 ```
 
 Now, we can expand what we've done to create a generic solution that provides a
 bootstrap confidence interval for an arbitrary metric.
 
-```{r, include = FALSE}
+```{r}
 bootstrap_ci <- function(x, f, alpha = 0.05, n_samples = 5000) {
   bs_out <- replicate(n_samples, f(sample(x, replace = TRUE)))
   quantile(bs_out, c(alpha/2, 1 - alpha/2))
 }
 ```
 
-```{r, include = FALSE}
-bootstrap_ci(faithful$waiting, function(x) quantile(x, .25))
+```{r}
+bootstrap_ci(faithful$waiting, function(x) quantile(x, .25), alpha = .05)
 ```
-
-
