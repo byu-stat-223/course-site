@@ -32,8 +32,8 @@ for (i in 1:n_reps) {
 calculated_odds <- replicate(n_reps, tournament(1/54))
 
 ## Part 4 ----
-ci <- function(x) {
-  estimate <- mean(x, level = 0.95)
+ci <- function(x, level = 0.95) {
+  estimate <- mean(x)
   ci <- estimate + c(-1, 1) * qt(1 - (1 - level)/2, df = length(x) - 1) * sd(x)/sqrt(length(x))
   c(lower = ci[1],
     estimate = estimate,
