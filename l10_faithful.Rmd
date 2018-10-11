@@ -1,0 +1,72 @@
+---
+title: "Old Faithful - Time Series Autocorrelation"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+In this example we're going to use the built in `faithful` dataset which contains
+two columns: `eruptions` and `waiting`. We want to determine of the waiting times
+between Old Faithful eruptions are autocorrelated.
+
+$$
+H_0: \text{there is no correlation} \\
+H_a: \text{there is a correlation}
+$$
+
+First, let's look at the data for Old Faithful waiting times.
+
+```{r}
+waiting <- faithful$waiting
+plot(waiting, type = "b")
+```
+
+Now, to estimate autocorrelation, we can do the following:
+```{r}
+observed_cor <- cor(waiting[-length(waiting)], waiting[-1])
+observed_cor
+```
+
+Now, in order to determine if this value is significant, we need some way to 
+determine a p value. Once again, we can rely on permutation testing to build a 
+distribution of values under the null hypothesis and then compare our observed
+value to that distribution.
+
+```{r}
+n_permutations <- 10000
+results <- replicate(n_permutations, {
+  new_waiting <- sample(waiting)
+  cor(new_waiting[-length(new_waiting)], new_waiting[-1])
+})
+```
+
+Now that we have `results`, which contains 10000 autocorrelation values under the
+null hypothesis, we can examine its distribution.
+
+```{r}
+plot(density(results))
+```
+
+Now, let's look at our `observed_cor` value in light of these results.
+
+```{r}
+plot(density(results))
+abline(v = observed_cor, col = "red")
+```
+
+Given our `observed_cor` and the values contained in `results`, we can caluclate
+a p value and associated confidence interval as follows:
+```{r}
+p_value <- mean(abs(results) >= abs(observed_cor))
+p_value
+```
+
+```{r}
+ci <- p_value + c(-1, 1) * qnorm(.975) * sqrt(p_value * (1 - p_value) / n_permutations)
+c(lower = ci[1],
+  p_value = p_value,
+  upper = ci[2])
+```
+

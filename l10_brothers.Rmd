@@ -1,0 +1,102 @@
+---
+title: "Brothers"
+output: html_notebook
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+Consider the following data about sets of brothers, each set consisting of an older
+and younger brother.
+
+```{r}
+brothers <- data.frame(
+  older = c(21, 10, 50, 15, 46, 39, 35, 25, 39, 31, 40, 35, 45, 33),
+  younger = c(44, 9, 61, 19, 44, 43, 26, 27, 26, 40, 57, 56, 52, 39)
+)
+```
+
+The question we're considering is whether or not there is a difference between 
+older and younger brothers. One way we can quantify this difference is by taking
+the difference of the median value for each group.
+
+```{r}
+observed_difference <- median(brothers$older) - median(brothers$younger)
+observed_difference
+```
+
+Now, how do we determine if this is "significant"? Using a permutation test, we
+can create a distribution of data under the null hypothesis. That is, we can simulate
+scenarios where the null hypothesis is true.
+
+In this case, if the null hypothesis is true, that means that there is no difference
+between older and younger brothers. If that's the case, it shouldn't matter which
+brother is assigned which score. **This is the basis of the permutation test:**  
+
+> The distribution of the test statistic under the null hypothesis is obtained 
+by calculating all possible values of the test statistic under rearrangements of 
+the labels on the observed data points ([Wikipedia](https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests)).
+
+
+Essentially, we're going to create the null hypothesis by breaking the connection 
+between label and response.
+
+To build some intuition behind this, let's walk through a single permutation of 
+the `brothers` data.
+
+```{r}
+perm_sample <- apply(brothers, 1, sample)
+perm_sample
+```
+
+Now that we've gone through a single permutation, let's calculate the difference
+in medians given this version of the data.
+
+```{r}
+median(perm_sample[1,]) - median(perm_sample[2,])
+```
+
+Now, following the theme of this class, we're going to do that "a bunch of times"
+so that we can build up a distribution of values under the null hypothesis.
+
+```{r}
+n_permutations <- 10000
+results <- replicate(n_permutations, {
+  perm_sample <- apply(brothers, 1, sample)
+  median(perm_sample[1,]) - median(perm_sample[2,])
+})
+```
+
+Now we have `results` which contains 10,000 calculated differences *under the null
+hypothesis*. We can look at a distribution of these values.
+
+```{r}
+plot(density(results))
+```
+
+We can also plot our original `observed_difference`.
+
+```{r}
+plot(density(results))
+abline(v = observed_difference, col = "red")
+```
+
+Now, given this, how can we answer our original question (is there a difference)?
+Well, knowing the definition of a p value, we can do the following:
+
+```{r}
+p_value <- mean(results <= observed_difference)
+p_value
+```
+
+Now, are we done? Not quite! Remember, this p_value is only an estimate! We need
+to assess and report on the uncertainty around this estimate.
+
+```{r}
+ci <- p_value + c(-1, 1) * qnorm(.975) * sqrt(p_value * (1 - p_value) / n_permutations)
+c(lower = ci[1],
+  p_value = p_value,
+  upper = ci[2])
+```
+
