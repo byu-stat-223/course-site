@@ -5,9 +5,33 @@ output: html_document
 
 <!--
 Possible R Moments:
-- plumber
 - opencpu
+- htmlwidgets
+- RMarkdown
+- h2o
+- drake
+- charlatan
 ---->
+#### 2018-10-11
+
+*The Lord is with us, mindful of us and blessing us in ways only He can do. Prayer can call down the strength and the revelation that we need to center our thoughts on Jesus Christ and His atoning sacrifice. The Lord knew that at times we would feel fear. I have been there and so have you, which is why the scriptures are replete with the Lord’s counsel:
+“Be of good cheer, and do not fear.”*
+
+\- Ronald A. Rasband ([GC October 2018](https://www.lds.org/general-conference/2018/10/be-not-troubled?lang=eng))
+
++ Announcements
+  + [Big Mountain Data & Dev conference](https://www.utahgeekevents.com/events/big-mountain-data-dev/)
+    + I'm speaking Friday morning at 10:45
+  + I'm out of town next Tuesday (October 16) - Dr. Dahl will provide a guest lecture
++ R Moment: [RStudio SQL Integration](https://blog.rstudio.com/2018/10/02/rstudio-1-2-preview-sql/)
++ Exam Grade review
++ [Homework 5](hw5.html) questions
++ Introduction to [Permutation Tests](https://en.wikipedia.org/wiki/Resampling_(statistics)#Permutation_tests)
+  + [Brothers](l10_brothers.nb.html)
+  + [Faithful](l10_faithful.nb.html)
+  + [GPA](l10_gpa.nb.html)
++ [Homework 6](hw6.html) Assigned (Due 2018-10-18 at 8pm)
+
 #### 2018-10-09
 
 *“All that we call human history -- money, poverty, ambition, war, prostitution, 
