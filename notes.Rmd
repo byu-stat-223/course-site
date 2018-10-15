@@ -27,11 +27,11 @@ less than the promised blessings.*
 + [Homework 6](hw6.html) questions
 + Regular Expressions
   + [Goldman Sachs Poster](l11_gs_poster.jpg)
-  + Web Scraping (baseball scores) ([Data](azd.html) | [Code](l11_baseball.R))
   + Centroids ([Data](EEH_clus4_331.rpt) | [R Code](l11_centroids.R) | [VIM](l11_centroids.vim))
   + Food ([Data](FOOD_DES.txt) | [Code](l11_food.R))
   + Hotdog ([Data](hotdog.txt) | [Code](l11_hotdog.R))
   + f1a9we_.ain ([Data](f1a9we_.ain.afasta) | [Code](l11_fasta.R))
+  + Web Scraping (baseball scores) ([Data](azd.html) | [Code](l11_baseball.R))
   + Version Number ([lib1.jar](lib1.jar) | [lib2.jar](lib2.jar) | [Code](l11_version_number.R))
 
 #### 2018-10-11
