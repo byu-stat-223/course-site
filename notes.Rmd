@@ -12,6 +12,28 @@ Possible R Moments:
 - drake
 - charlatan
 ---->
+
+#### 2018-10-16
+
+*Considering the Savior’s great promise for peace in this life and eternal life 
+in the life to come, discipleship is a price worth paying. It is a price we cannot 
+afford not to pay. By measure, the requirements of discipleship are much, much 
+less than the promised blessings.*
+
+\- James E. Faust ([GC October 2006](https://www.lds.org/general-conference/2006/10/discipleship?lang=eng))
+
++ Announcements
+  + Final exam starts Friday at 8am and is due Monday (2018-10-22) at 11:59pm
++ [Homework 6](hw6.html) questions
++ Regular Expressions
+  + [Goldman Sachs Poster](l11_gs_poster.jpg)
+  + Web Scraping (baseball scores) ([Data](azd.html) | [Code](l11_baseball.R))
+  + Centroids ([Data](EEH_clus4_331.rpt) | [R Code](l11_centroids.R) | [VIM](l11_centroids.vim))
+  + Food ([Data](FOOD_DES.txt) | [Code](l11_food.R))
+  + Hotdog ([Data](hotdog.txt) | [Code](l11_hotdog.R))
+  + f1a9we_.ain ([Data](f1a9we_.ain.afasta) | [Code](l11_fasta.R))
+  + Version Number ([lib1.jar](lib1.jar) | [lib2.jar](lib2.jar) | [Code](l11_version_number.R))
+
 #### 2018-10-11
 
 *The Lord is with us, mindful of us and blessing us in ways only He can do. Prayer can call down the strength and the revelation that we need to center our thoughts on Jesus Christ and His atoning sacrifice. The Lord knew that at times we would feel fear. I have been there and so have you, which is why the scriptures are replete with the Lord’s counsel:
