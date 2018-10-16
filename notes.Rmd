@@ -27,6 +27,8 @@ less than the promised blessings.*
 + [Homework 6](hw6.html) questions
 + Regular Expressions
   + [Goldman Sachs Poster](l11_gs_poster.jpg)
+  + [Helpful resources](https://www.regular-expressions.info/) for regular expressions.
+  + [Online tool](https://regexr.com/) for regular expressions
   + Web Scraping (baseball scores) ([Data](azd.html) | [Code](l11_baseball.R))
   + Centroids ([Data](EEH_clus4_331.rpt) | [R Code](l11_centroids.R) | [VIM](l11_centroids.vim))
   + Food ([Data](FOOD_DES.txt) | [Code](l11_food.R))
