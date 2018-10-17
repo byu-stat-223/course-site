@@ -6,11 +6,13 @@ output: html_document
 While not required, these resources will help you grow in your understanding of
 R.
 
+### [Hands-On Programming with R](https://rstudio-education.github.io/hopr/)
++ New resource that teaches basic R programming in a very aproachable manner.
+
 ### [R for Data Science](http://r4ds.had.co.nz)
 * Great resource for learning modern data science techniques using R.
 * Focusses on the [tidyverse](https://www.tidyverse.org) and how various tools
 enable different aspects of the Data Science process.
-
 
 ### [Introduction to R](https://colinfay.me/intro-to-r/)
 + Generally approachable introduction to the R language.
