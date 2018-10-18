@@ -13,6 +13,25 @@ Possible R Moments:
 - charlatan
 ---->
 
+#### 2018-10-18
+
+*My God hath been my support; he hath led me through mine afflictions in the 
+wilderness; and he hath preserved me upon the waters of the great deep. He hath 
+filled me with his love, even unto the consuming of my flesh. He hath confounded 
+mine enemies, unto the causing of them to quake before me.*
+
+\- [2 Nephi 4:20-22](https://www.lds.org/scriptures/bofm/2-ne/4.20-22)
+
++ Announcements
+  + Final exam starts tomorrow at 8am and is due Monday (2018-10-22) at 11:59pm
+  + No class on Tuesday (2018-10-23)
++ R Moment: [Hands-On Programming with R](https://rstudio-education.github.io/hopr/index.html)
++ Intro to the [Tidyverse](https://www.tidyverse.org)
+
+![](data-science-workflow.png)
+
+  + [Data sets](https://www.kaggle.com/datasets)
+
 #### 2018-10-16
 
 *Considering the Savior’s great promise for peace in this life and eternal life 
