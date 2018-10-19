@@ -31,6 +31,8 @@ mine enemies, unto the causing of them to quake before me.*
 ![](data-science-workflow.png)
 
   + [Data sets](https://www.kaggle.com/datasets)
+  + [NBA EDA](https://github.com/byu-stat-223/nba-players)
+  + [Google Playstore EDA](https://github.com/byu-stat-223/google-playstore)
 
 #### 2018-10-16
 
