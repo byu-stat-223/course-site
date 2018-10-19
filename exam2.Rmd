@@ -74,7 +74,9 @@ Yards Per Point Differential is calculated based on Yards Per Point Defense minu
 Yards Per Point Offense. Yards Per Point Defense is the total yards allowed by a
 team divided by the total points scored against a team. Yards Per Point Offense 
 is the total number of yards gained by a team divided by the total number of points
-a team scores. 
+a team scores. This metric provides a measure of team efficiency - a high
+Yards Per Point Differential indicates that a team was, on average, more efficient 
+than its opponents.
 
 The `alabama.csv` file contained in your repository contains the following columns:
 
