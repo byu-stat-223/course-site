@@ -67,8 +67,8 @@ As this current season continues, both quarterbacks remain on the roster, and
 both have seen meaningful playing time. The question we want to answer is this: 
 *does starting Tua make Alabama a better team than starting Jalen?* Now, the 
 notion of what makes a "better" team is certainly one that can be debated. In 
-this scenario, we're going to use Yards Per Point Differential, as introduced at 
-the [MIT Sloan Sports Analytics Conference in 2013](http://www.sloansportsconference.com/wp-content/uploads/2013/Slides/EOS/Identifying%20an%20accurate%20metric%20for%20football%20efficiency.pdf).
+this scenario, we're going to use Yards Per Point (YPP) Differential, as introduced 
+at the [MIT Sloan Sports Analytics Conference in 2013](http://www.sloansportsconference.com/wp-content/uploads/2013/Slides/EOS/Identifying%20an%20accurate%20metric%20for%20football%20efficiency.pdf).
 
 Yards Per Point Differential is calculated based on Yards Per Point Defense minus
 Yards Per Point Offense. Yards Per Point Defense is the total yards allowed by a
@@ -89,9 +89,9 @@ The `alabama.csv` file contained in your repository contains the following colum
 Given this dataset, the following can be used to calculate Yards Per Point Differential:
 
 $$
-YYP_{diff} = YYP_{defense} - YYP_{offense}\\
-YYP_{defense} = \frac{\sum \text{yards_against}}{\sum \text{points_against}}\\
-YYP_{offense} = \frac{\sum \text{yards}}{\sum \text{points}}
+YPP_{diff} = YPP_{defense} - YPP_{offense}\\
+YPP_{defense} = \frac{\sum \text{yards_against}}{\sum \text{points_against}}\\
+YPP_{offense} = \frac{\sum \text{yards}}{\sum \text{points}}
 $$
 
 With this setup, we have the following hypotheses:

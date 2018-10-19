@@ -252,7 +252,7 @@ $(document).ready(function () {
 <div id="alabama-75-points" class="section level2">
 <h2>Alabama (75 points)</h2>
 <p>Alabama has been a college football dynasty for the past decade. Over that time frame, the program has built a legacy of strong defense that has led to multiple national championships. Now, this year, Alabama is experiencing an offensive resurgence led by sophomore quarterback Tua Tagovailoa. Tua’s rise to the top of the nation’s premier program hasn’t been without controversy. At the start of this season Tua replaced Jalen Hurts as Alabama’s starting quarterback. Jalen has been an excellent quarterback for the Crimson Tide and owns a 26-2 record as a starter. As a true freshman Jalen was named the SEC Offensive Player of the year.</p>
-<p>As this current season continues, both quarterbacks remain on the roster, and both have seen meaningful playing time. The question we want to answer is this: <em>does starting Tua make Alabama a better team than starting Jalen?</em> Now, the notion of what makes a “better” team is certainly one that can be debated. In this scenario, we’re going to use Yards Per Point Differential, as introduced at the <a href="http://www.sloansportsconference.com/wp-content/uploads/2013/Slides/EOS/Identifying%20an%20accurate%20metric%20for%20football%20efficiency.pdf">MIT Sloan Sports Analytics Conference in 2013</a>.</p>
+<p>As this current season continues, both quarterbacks remain on the roster, and both have seen meaningful playing time. The question we want to answer is this: <em>does starting Tua make Alabama a better team than starting Jalen?</em> Now, the notion of what makes a “better” team is certainly one that can be debated. In this scenario, we’re going to use Yards Per Point (YPP) Differential, as introduced at the <a href="http://www.sloansportsconference.com/wp-content/uploads/2013/Slides/EOS/Identifying%20an%20accurate%20metric%20for%20football%20efficiency.pdf">MIT Sloan Sports Analytics Conference in 2013</a>.</p>
 <p>Yards Per Point Differential is calculated based on Yards Per Point Defense minus Yards Per Point Offense. Yards Per Point Defense is the total yards allowed by a team divided by the total points scored against a team. Yards Per Point Offense is the total number of yards gained by a team divided by the total number of points a team scores.</p>
 <p>The <code>alabama.csv</code> file contained in your repository contains the following columns:</p>
 <ul>
@@ -266,9 +266,9 @@ $(document).ready(function () {
 </ul>
 <p>Given this dataset, the following can be used to calculate Yards Per Point Differential:</p>
 <p><span class="math display">\[
-YYP_{diff} = YYP_{defense} - YYP_{offense}\\
-YYP_{defense} = \frac{\sum \text{yards_against}}{\sum \text{points_against}}\\
-YYP_{offense} = \frac{\sum \text{yards}}{\sum \text{points}}
+YPP_{diff} = YPP_{defense} - YPP_{offense}\\
+YPP_{defense} = \frac{\sum \text{yards_against}}{\sum \text{points_against}}\\
+YPP_{offense} = \frac{\sum \text{yards}}{\sum \text{points}}
 \]</span></p>
 <p>With this setup, we have the following hypotheses:</p>
 <p><span class="math display">\[
