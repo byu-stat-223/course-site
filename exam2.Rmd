@@ -41,7 +41,8 @@ The interquartile range (IQR) is the 75th percentile minus the 25th percentile
 and is a measure of spread.
 
 1. Create a function called `iqr` that takes a single numeric vector, `x`, as an
-argument and returns the interquartile range of `x` (10 points).
+argument and returns the interquartile range of `x`. You should **not** use the
+built in `IQR()` function in R (10 points).
 2. Use your function defined above to calculate the IQR for the data provided
 in `iqr.R` (5 points).
 3. Use bootstrap sampling to build a 95% confidence interval around the IQR value
