@@ -1,0 +1,12 @@
+---
+title: "Homework 6 Solutions"
+date: "Due 2018-10-18 at 8pm"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
++ [CLEC](hw6_verizon_sol.R)
++ [ACT](hw6_act_sol.R)
